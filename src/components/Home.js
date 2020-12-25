@@ -1,11 +1,13 @@
 import { useSelector } from "react-redux";
+import ArticleList from "./article/ArticleList";
 
 const Home = ({ history }) => {
   const auth = useSelector((state) => state.authReducer);
 
   return (
-    <div className="">
-      <h1>HOMEPAGE {(auth.isLoggedIn) ? `FOR, ${auth.user.userName}` : null}</h1>
+    <div className="container">
+      <h1>Welcome, {(auth.isLoggedIn) ? `${auth.user.userName}` : 'Guest'}</h1>
+      <ArticleList/>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import AuthService from '../../services/authService';
-export const LOGIN = 'LOGIN';
-export const REGISTER  = 'REGISTER'
+import { LOGIN, REGISTER } from './actionTypes';
+
 
 export const login = (params, history) => dispatch => {
     return AuthService.login(params)

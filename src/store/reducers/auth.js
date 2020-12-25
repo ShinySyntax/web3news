@@ -1,4 +1,4 @@
-import { LOGIN, REGISTER } from '../actions/auth';
+import { LOGIN, REGISTER } from '../actions/actionTypes';
 
 const initalState = {
     user: {},

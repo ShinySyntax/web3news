@@ -37,7 +37,6 @@ const Login = ({ history }) => {
               />
               <label htmlFor="email"></label>
             </div>
-
             <div className="input-field">
               <i className="material-icons prefix light-blue-text text-lighten-2">
                 lock

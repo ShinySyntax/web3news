@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAtlas } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = (...props) => {
   const auth = useSelector(state => state.authReducer);
@@ -11,7 +11,8 @@ const Navbar = (...props) => {
       <div className="nav-wrapper light-blue darken-1">
         <div className="brand-logo">
           <NavLink to="/">
-            <i className="material-icons">chat</i>Web3News
+            <FontAwesomeIcon icon={faAtlas} />
+            Web3News
           </NavLink>
         </div>
 

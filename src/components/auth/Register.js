@@ -12,7 +12,11 @@ const Register = ({ history }) => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    dispatch(register({ userName, email, password }, history));
+    dispatch(register({ userName, email, password }, history))
+      .then(data => {
+        alert(data);
+      })
+      .catch(err => console.error(err.message));
   };
 
   return (
