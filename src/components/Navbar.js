@@ -1,76 +1,99 @@
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAtlas } from '@fortawesome/free-solid-svg-icons'
+import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faConnectdevelop } from "@fortawesome/free-brands-svg-icons";
 
 const Navbar = (...props) => {
-  const auth = useSelector(state => state.authReducer);
-  
-  return (
-    <nav>
-      <div className="nav-wrapper light-blue darken-1">
-        <div className="brand-logo">
-          <NavLink to="/">
-            <FontAwesomeIcon icon={faAtlas} />
-            Web3News
-          </NavLink>
-        </div>
+  const auth = useSelector((state) => state.authReducer);
 
-        <ul className="right hide-on-med-and-down">
-          <li>
-            <NavLink
-              to="/profile"
-              activeClassName={"waves-effect waves-light btn blue darken-5"}
-            >
-              <i className="material-icons">search</i>
-            </NavLink>
-          </li>
+  return (
+    <nav
+      className="navbar is-dark is-fixed-top"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div className="navbar-brand">
+        <Link className="navbar-item" to="/">
+          <FontAwesomeIcon
+            icon={faConnectdevelop}
+            size="2x"
+            style={{ marginRight: "6px" }}
+          />
+          Web3News
+        </Link>
+      </div>
+
+      <div id="navbarBasicExample" className="navbar-menu">
+        <div className="navbar-start">
+          {/* <div className="navbar-item has-dropdown is-hoverable">
+            <a className="navbar-link">More</a>
+            <div className="navbar-dropdown">
+              <a className="navbar-item">About</a>
+              <a className="navbar-item">Jobs</a>
+              <a className="navbar-item">Contact</a>
+              <hr className="navbar-divider" />
+              <a className="navbar-item">Report an issue</a>
+            </div>
+          </div> */}
+        </div>
+        <div className="navbar-item">
+          <div
+            id="coinmarketcap-widget-marquee"
+            coins="1,1027,7412,2010"
+            currency="USD"
+            theme="dark"
+            transparent="true"
+            show-symbol-logo="true"
+          ></div>
+        </div>
+        <div className="navbar-end">
           {auth.isLoggedIn ? (
-            <li>
-              <NavLink
+            <>
+              <Link
+                className="navbar-item"
                 to={{
                   pathname: "/article/new",
                   state: { user: auth.user },
                 }}
-                activeClassName={"waves-effect waves-light btn blue darken-5"}
               >
                 <i className="material-icons">add</i>
-              </NavLink>
-            </li>
-          ) : null}
-          {auth.isLoggedIn ? (
-            <li>
-              <NavLink
+              </Link>
+              <Link
+                to={{
+                  pathname: "/profile",
+                  state: { user: auth.user },
+                }}
+                className="navbar-item"
+              >
+                <i className="material-icons">account_box</i>
+              </Link>
+              <Link
+                className="navbar-item"
                 to={{
                   pathname: "/reading-list",
                   state: { user: auth.user },
                 }}
-                activeClassName={"waves-effect waves-light btn blue darken-5"}
               >
                 <i className="material-icons">chrome_reader_mode</i>
-              </NavLink>
-            </li>
+              </Link>
+            </>
           ) : null}
-          <li>
-            <NavLink
-              to="/profile"
-              activeClassName={"waves-effect waves-light btn blue darken-5"}
-            >
-              <i className="material-icons">account_box</i>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/profile"
-              activeClassName={"waves-effect waves-light btn blue darken-5"}
-            >
-              <i className="material-icons">more_vert</i>
-            </NavLink>
-          </li>
-        </ul>
+        </div>
+        <div className="navbar-item">
+          {!auth.isLoggedIn ? (
+            <div className="buttons">
+              <Link to="/login" className="button is-light">
+                Login
+              </Link>
+              <Link to="/register" className="button is-light">
+                Register
+              </Link>
+            </div>
+          ) : null}
+        </div>
       </div>
     </nav>
   );
-
 };
 export default Navbar;

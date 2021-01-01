@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';        // THIRD  
 import React from 'react';                                                        // PARTY
-import 'materialize-css/dist/css/materialize.min.css';                            // LIBRARIES
+import 'bulma/css/bulma.css';
+import './assets/main.css';
+import { Toaster } from "react-hot-toast";
 
 import Home from "./components/Home";
 import Login from './components/auth/Login';
@@ -11,7 +13,7 @@ import Navbar from './components/Navbar';
 import NewArticle from './components/article/New';
 import ReadingList from './components/ReadingList';
 
-// import useToken  from "./utils/useToken";              figure persistent sessions out...
+// import useToken  from "./utils/useToken";              figure persistent sessions out... decide on cookies vs localStorage
 import * as url from './assets/images/web3-dev.jpg';
 
 const App = () => {
@@ -20,14 +22,18 @@ const App = () => {
   return (
     <Router>
       <Navbar />
+      <Toaster position="top-center" />
       <div
         style={{
-          backgroundImage: `url(${url.default})`,
-          backgroundSize: "cover",
-          height: "100vh",
+          // backgroundImage: `url(${url.default})`,
+          // backgroundSize: "cover",
+          // height: "100vh",
+          background: '#171924',
+          position: 'relative',
+          top: '24px'
         }}
       >
-        <div className="container center">
+        <div className="container">
           <Switch>
             <Route exact path="/" component={Home} />
             <ProtectedRoute path="/profile" component={UserProfile} />

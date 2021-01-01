@@ -1,8 +1,15 @@
-import { React, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { React, useState } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAt,
+  faKey,
+  faPaperPlane,
+  faCheck
+} from "@fortawesome/free-solid-svg-icons";
 
-import { login } from '../../store/actions/auth';
+import { login } from "../../store/actions/auth";
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -15,58 +22,100 @@ const Login = ({ history }) => {
   };
 
   return (
-    <div className="container col s12 xl12 center center-align">
-      <div className="card-panel blue lighten-5 z-depth-5 center center-align">
-        <form onSubmit={submitForm}>
-          <h5 className="header strong">Login</h5>
-          <h6 className="light">
-            and get the latest cutting edge web3 news... straight to your homepage
-          </h6>
-          <div className="container">
-            <div className="input-field">
-              <i className="material-icons prefix light-blue-text text-lighten-2">
-                email
-              </i>
-              <input
-                id="email"
-                type="email"
-                className="validate"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <label htmlFor="email"></label>
+    <div className="hero is-white">
+      <section className="section is-block is-relative is-small">
+        <div className="container">
+          <header className="has-text-centered">
+            <h1 className="title has-text-weight-bold is-3 is-spaced">Login</h1>
+            <h2 className="subtitle">
+              and get the latest cutting edge web3 news...
+              <strong>straight to your homepage</strong>
+            </h2>
+          </header>
+
+          <form onSubmit={submitForm}>
+            <div className="field">
+              <div className="control has-icons-left has-icons-right">
+                <input
+                  type="email"
+                  className="input is-medium"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <span className="icon is-small is-left">
+                  <FontAwesomeIcon
+                    icon={faAt}
+                    size="1x"
+                    className={email ? "has-text-info" : ""}
+                  />
+                </span>
+                <span className="icon is-small is-right">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    size="1x"
+                    className={email ? "has-text-info" : ""}
+                  />
+                </span>
+              </div>
+              {!email ? (
+                <p className="help is-danger">Please enter your email</p>
+              ) : null}
             </div>
-            <div className="input-field">
-              <i className="material-icons prefix light-blue-text text-lighten-2">
-                lock
-              </i>
-              <input
-                id="account_password"
-                type="text"
-                className="validate"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <label htmlFor="account_password"></label>
+
+            <div className="field">
+              <div className="control has-icons-left has-icons-right">
+                <input
+                  type="password"
+                  className="input is-medium"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <span className="icon is-small is-left">
+                  <FontAwesomeIcon
+                    icon={faKey}
+                    size="1x"
+                    className={password.length >= 6 ? "has-text-info" : ""}
+                  />
+                </span>
+                <span className="icon is-small is-right">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    size="1x"
+                    className={password.length >= 6 ? "has-text-info" : ""}
+                  />
+                </span>
+              </div>
+              {password.length >= 6 ? null : (
+                <p className="help is-danger">
+                  Password must be a minimum of 6 characters
+                </p>
+              )}
             </div>
-            <div className="right-align">
+
+            <div className="control">
               <button
-                className="btn blue darken-4 waves-light"
+                className="button is-medium is-fullwidth is-primary"
                 type="submit"
                 name="action"
               >
                 Submit
-                <i className="material-icons right">send</i>
+                <FontAwesomeIcon
+                  icon={faPaperPlane}
+                  size="1x"
+                  className={
+                    email && password.length > 6 ? "has-text-info" : ""
+                  }
+                />
               </button>
-              <p>
+              <p className="has-text-right is-size-6">
                 Don't have an account? <Link to="/register">Register</Link>
               </p>
             </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
+      </section>
     </div>
   );
 };

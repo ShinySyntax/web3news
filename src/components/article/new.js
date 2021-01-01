@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { React, useState } from "react";
 import { useDispatch } from "react-redux"
 
 import { post } from '../../store/actions/article'
@@ -20,25 +20,25 @@ const Article = (props, history) => {
     }
 
     return (
-      <div class="row">
-        <form class="col s12" onSubmit={onSubmit}>
-          <div class="row">
-            <div class="input-field col s6">
+      <div className="row">
+        <form className="col s12" onSubmit={onSubmit}>
+          <div className="row">
+            <div className="input-field col s6">
               <input
                 placeholder="Title"
                 id="article-title"
                 type="text"
-                class="validate"
+                className="validate"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
               <label for="article-title"></label>
             </div>
-            <div class="input-field col s6">
+            <div className="input-field col s6">
               <input
                 id=""
                 type="text"
-                class="validate"
+                className="validate"
                 placeholder="URL"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
@@ -46,11 +46,11 @@ const Article = (props, history) => {
               <label for="last_name"></label>
             </div>
           </div>
-          <div class="row">
-            <div class="input-field col s12">
+          <div className="row">
+            <div className="input-field col s12">
               <textarea
                 id="textarea1"
-                class="materialize-textarea"
+                className="materialize-textarea"
                 placeholder="Description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
