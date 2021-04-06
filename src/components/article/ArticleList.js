@@ -29,7 +29,7 @@ const ArticleList = ({ ...props }) => {
     fetchData();
   }, []); // Empty array runs on inital render ONLY.
 
-  if (articles.length > 0) {
+  if (articles && articles.length > 0) {
     const renderedResults = articles.map((item) => {
       return <Article key={item.id} {...item} />;
     });
