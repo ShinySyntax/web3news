@@ -1,17 +1,17 @@
 /* @import 'bulma/css/bulma.css'; */
 .navbar.is-dark.is-fixed-top {
-    /* background: #171924; */
-    /* background: #222531; */
-    background: #222531eb;
+  /* background: #171924; */
+  /* background: #222531; */
+  background: #222531eb;
 }
 
 .coin-marquee-wrapper--dark {
-    border-top: unset !important;
-    border-bottom: unset !important;
+  border-top: unset !important;
+  border-bottom: unset !important;
 }
 
 .test-button {
-    background: linear-gradient(90deg, rgb(234, 0, 112), rgb(252, 84, 179));
+  background: linear-gradient(90deg, rgb(234, 0, 112), rgb(252, 84, 179));
 }
 
 .card.article {
@@ -39,9 +39,19 @@
   color: var(--color-light-neutral-4);
 }
 
+.card-header-date {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
 .card.article .article-vote-total {
   color: var(--text-color);
   margin-top: 8px;
+}
+
+.card.article .card-content .clickable svg {
+  cursor: cursor;
 }
 
 .card-footer {
@@ -63,77 +73,78 @@
 
 /* animation for price deltas */
 .article-vote-total {
-    color: var(--text-color);
+  color: var(--text-color);
 }
 
-  .article-vote-total.vote-total-increase {
-    color: #16c784;
-  }
+.article-vote-total.vote-total-increase {
+  color: #16c784;
+}
 
-  .article-vote-total.vote-total-decrease {
+.article-vote-total.vote-total-decrease {
+  color: #ea3943;
+}
+
+.article-vote-total.vote-total-increase {
+  animation: voteIncrease 3s linear forwards;
+}
+
+.article-vote-total.vote-total-decrease {
+  animation: voteDecrease 3s linear forwards;
+}
+
+@keyframes voteIncrease {
+  0% {
+    color: #18d00c;
+    opacity: 0;
+  }
+  40% {
+    color: #18d00c;
+    opacity: 0.4;
+  }
+  100% {
+    color: var(--text-color);
+    opacity: 1;
+  }
+}
+
+@keyframes voteDecrease {
+  0% {
     color: #ea3943;
   }
+  40% {
+    color: #ea3943;
+  }
+  100% {
+    color: var(--text-color);
+  }
+}
 
-  .article-vote-total.vote-total-increase {
-    animation: voteIncrease 3s linear forwards;
-  }
+body {
+  --control-border-color: #40424e;
+  --control-background-color: #222531;
+  --control-caret-color: #858ca2;
+  --control-dropdown-background-color: #323546;
+  --text-color: white;
+  --info-icon-color: #636c7f;
+  --text-color-sub: #a1a7bb;
+  --text-color-error: #ea3943;
+  --border-color: #222531;
+  --bg-color: #17171a;
+  --color-primary-black: #fff;
+  --color-primary-white: #000;
+  --color-primary-blue: #6188ff;
+  --color-light-neutral-1: #222531;
+  --color-light-neutral-2: #323546;
+  --color-light-neutral-4: #646b80;
+  --color-light-neutral-5: #858ca2;
+  --color-light-neutral-6: #a1a7bb;
+  --color-gradient-end: rgba(34, 37, 49, 0);
+  --button-border-color: #323546;
+  --dark-bg: #323546;
+}
 
-  .article-vote-total.vote-total-decrease {
-    animation: voteDecrease 3s linear forwards;
-  }
-
-  @keyframes voteIncrease {
-    0% {
-      color: #18d00c;
-      opacity: 0;
-    }
-    40% {
-      color: #18d00c;
-      opacity: 0.4;
-    }
-    100% {
-      color: var(--text-color);
-      opacity: 1;
-    }
-  }
-
-  @keyframes voteDecrease {
-    0% {
-      color: #ea3943;
-    }
-    40% {
-      color: #ea3943;
-    }
-    100% {
-      color: var(--text-color);
-    }
-  }
-
-  body {
-    --control-border-color: #40424e;
-    --control-background-color: #222531;
-    --control-caret-color: #858ca2;
-    --control-dropdown-background-color: #323546;
-    --text-color: white;
-    --info-icon-color: #636c7f;
-    --text-color-sub: #a1a7bb;
-    --text-color-error: #ea3943;
-    --border-color: #222531;
-    --bg-color: #17171a;
-    --color-primary-black: #fff;
-    --color-primary-white: #000;
-    --color-primary-blue: #6188ff;
-    --color-light-neutral-1: #222531;
-    --color-light-neutral-2: #323546;
-    --color-light-neutral-4: #646b80;
-    --color-light-neutral-5: #858ca2;
-    --color-light-neutral-6: #a1a7bb;
-    --color-gradient-end: rgba(34, 37, 49, 0);
-    --button-border-color: #323546;
-    --dark-bg: #323546;
-  }
-  
-  .reset-bad-styles {
-    background: rgb(23, 25, 36); 
-    position: relative; top: 24px;
-  }
+.reset-bad-styles {
+  background: rgb(23, 25, 36);
+  position: relative;
+  top: 24px;
+}

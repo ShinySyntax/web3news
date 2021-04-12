@@ -1,8 +1,10 @@
 import UpvoteService from "../../services/upvoteService";
 import {
   DOWNVOTE_ARTICLE,
+  DOWNVOTE_ARTICLE_FAILURE,
   GET_VOTE_SUM_TOTAL,
   UPVOTE_ARTICLE,
+  UPVOTE_ARTICLE_FAILURE,
 } from "./actionTypes";
 
 export const upvote = (params) => (dispatch) => {
@@ -10,7 +12,9 @@ export const upvote = (params) => (dispatch) => {
     .then((data) => {
       dispatch({ type: UPVOTE_ARTICLE, payload: data });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      dispatch({ type: UPVOTE_ARTICLE_FAILURE, payload: err });
+    });
 };
 
 export const downvote = (params) => (dispatch) => {
@@ -18,7 +22,9 @@ export const downvote = (params) => (dispatch) => {
     .then((data) => {
       dispatch({ type: DOWNVOTE_ARTICLE, payload: data });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      dispatch({ type: DOWNVOTE_ARTICLE_FAILURE, payload: err });
+    });
 };
 
 export const getSumTotal = (params) => (dispatch) => {

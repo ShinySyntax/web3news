@@ -40,7 +40,7 @@ const Navbar = (...props) => {
         <div className="navbar-item">
           <div
             id="coinmarketcap-widget-marquee"
-            coins="1,1027,7412,2010"
+            coins="1,1027,2010"
             currency="USD"
             theme="dark"
             transparent="true"

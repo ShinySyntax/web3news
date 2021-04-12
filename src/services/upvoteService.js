@@ -2,7 +2,7 @@ import API from "./api";
 
 const UpvoteService = {
   upvote: (data) => {
-    return API.post("/interactions/upvote", data)
+    return API.post("/interaction/upvote", data)
       .then((res) => {
         return res.data;
       })
@@ -10,7 +10,7 @@ const UpvoteService = {
   },
 
   downvote: (data) => {
-    return API.post("/interactions/downvote", data)
+    return API.post("/interaction/downvote", data)
       .then((res) => {
         return res.data;
       })
@@ -21,7 +21,7 @@ const UpvoteService = {
     const { articleID, userID } = data;
 
     return new Promise((resolve, reject) => {
-      API.get(`/interactions/${articleID}/${userID}`, data)
+      API.get(`/interaction/${articleID}/${userID}`, data)
         .then((res) => {
           resolve(res.data);
         })

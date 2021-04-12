@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 import ArticleService from "../../services/articleService";
 import Article from "./Article";
@@ -10,8 +8,6 @@ import Article from "./Article";
 const ArticleList = ({ ...props }) => {
   const auth = useSelector((state) => state.authReducer);
   const [articles, setArticles] = useState([]);
-
-  AOS.init(); // Initalize animations
 
   useEffect(() => {
     const fetchData = async () => {

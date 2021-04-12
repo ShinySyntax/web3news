@@ -8,11 +8,20 @@ import {
 import toast from "react-hot-toast";
 import { downvote, upvote } from "../../store/actions/upvote";
 
-const Article = ({ id, title, url, description, createdAt, interactions, voteTotal }) => {
+const Article = ({
+  id,
+  title,
+  url,
+  description,
+  createdAt,
+  interactions,
+  voteTotal,
+}) => {
   const auth = useSelector((state) => state.authReducer);
   const [upvoted, setUpvoted] = useState(false);
   const [downvoted, setDownvoted] = useState(false);
-  const [voteColor, setVoteColor] = useState('');
+  const [voteColor, setVoteColor] = useState("");
+  const [votes, setVotes] = useState(voteTotal);
   const date = new Date(createdAt).toLocaleString();
   const dispatch = useDispatch();
 
@@ -30,6 +39,7 @@ const Article = ({ id, title, url, description, createdAt, interactions, voteTot
           .then((res) => {
             setUpvoted(true);
             setDownvoted(false);
+            setVotes(votes + 1);
             toast.success("Successfully Upvoted!");
           })
           .catch((err) => {
@@ -50,6 +60,7 @@ const Article = ({ id, title, url, description, createdAt, interactions, voteTot
           .then((res) => {
             setDownvoted(true);
             setUpvoted(false);
+            setVotes(votes - 1);
             toast.success("Successfully Downvoted!");
           })
           .catch((err) => {
@@ -61,9 +72,12 @@ const Article = ({ id, title, url, description, createdAt, interactions, voteTot
     } else toast.error("Not logged in. Please login to vote on articles.");
   };
 
-  useEffect((e) => {
-    console.log(e);
-  }, [upvote, downvote]);
+  useEffect(
+    (e) => {
+      console.log(e);
+    },
+    [upvote, downvote]
+  );
 
   const getVoteIcons = () => {
     return (
@@ -78,9 +92,13 @@ const Article = ({ id, title, url, description, createdAt, interactions, voteTot
         data-aos-once="true"
         data-aos-anchor-placement="top-bottom"
       >
-        {<div className="column is-half is-size-4 has-text-weight-bold has-text-centered article-vote-total">{voteTotal}</div>}
+        {
+          <div className="column is-half is-size-4 has-text-weight-bold has-text-centered article-vote-total">
+            {votes}
+          </div>
+        }
         <div className="column is-half">
-          <span className="icon article-vote">
+          <span className="clickable icon article-vote">
             <FontAwesomeIcon
               icon={faArrowAltCircleUp}
               size="2x"
@@ -88,7 +106,7 @@ const Article = ({ id, title, url, description, createdAt, interactions, voteTot
               onClick={onUpvote}
             />
           </span>
-          <span className="icon article-vote">
+          <span className="clickable icon article-vote">
             <FontAwesomeIcon
               icon={faArrowAltCircleDown}
               size="2x"
@@ -125,7 +143,7 @@ const Article = ({ id, title, url, description, createdAt, interactions, voteTot
         data-aos-anchor-placement="top-bottom"
       >
         <p className="card-header-title is-5">{title}</p>
-        <p className="subtitle is-7">{date}</p>
+        <p className="card-header-date subtitle is-7">{date}</p>
       </header>
 
       <div
