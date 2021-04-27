@@ -8,24 +8,24 @@ const Navbar = (...props) => {
   const auth = useSelector((state) => state.authReducer);
 
   return (
-    <nav
-      className="navbar is-dark is-fixed-top"
+    <header
+      className="fixed bg-darkblue-800 bg-opacity-95 shadow-sm z-50 w-full px-1 py-1 flex justify-between items-center"
       role="navigation"
       aria-label="main navigation"
     >
-      <div className="navbar-brand">
-        <Link className="navbar-item" to="/">
+      <div className="">
+        <Link className="flex text-darkblue-50" to="/">
           <FontAwesomeIcon
             icon={faConnectdevelop}
             size="2x"
-            style={{ marginRight: "6px" }}
+            className="mx-2"
           />
-          Web3News
+          <p className="flex mt-1">Web3News</p>
         </Link>
       </div>
 
-      <div id="navbarBasicExample" className="navbar-menu">
-        <div className="navbar-start">
+      <div className="flex items-center">
+        <div className="">
           {/* <div className="navbar-item has-dropdown is-hoverable">
             <a className="navbar-link">More</a>
             <div className="navbar-dropdown">
@@ -37,7 +37,7 @@ const Navbar = (...props) => {
             </div>
           </div> */}
         </div>
-        <div className="navbar-item">
+        <div className="">
           <div
             id="coinmarketcap-widget-marquee"
             coins="1,1027,2010"
@@ -47,11 +47,11 @@ const Navbar = (...props) => {
             show-symbol-logo="true"
           ></div>
         </div>
-        <div className="navbar-end">
+        <div className="">
           {auth.isLoggedIn ? (
             <>
               <Link
-                className="navbar-item"
+                className="m-4 text-darkblue-400 hover:text-darkblue-100"
                 to={{
                   pathname: "/article/new",
                   state: { user: auth.user },
@@ -64,12 +64,12 @@ const Navbar = (...props) => {
                   pathname: "/profile",
                   state: { user: auth.user },
                 }}
-                className="navbar-item"
+                className="m-4 text-darkblue-400 hover:text-darkblue-100"
               >
                 <i className="material-icons">account_box</i>
               </Link>
               <Link
-                className="navbar-item"
+                className="m-4 text-darkblue-400 hover:text-darkblue-100"
                 to={{
                   pathname: "/reading-list",
                   state: { user: auth.user },
@@ -80,20 +80,18 @@ const Navbar = (...props) => {
             </>
           ) : null}
         </div>
-        <div className="navbar-item">
-          {!auth.isLoggedIn ? (
-            <div className="buttons">
-              <Link to="/login" className="button is-light">
-                Login
+        {!auth.isLoggedIn ? (
+          <div className="flex items-center mr-2">
+            <Link to="/login" className="text-darkblue-800 p-2 m-1 rounded bg-darkblue-300 hover:bg-darkblue-600 hover:text-darkblue-300">
+              Login
               </Link>
-              <Link to="/register" className="button is-light">
-                Register
+            <Link to="/register" className="text-darkblue-800 p-2 m-1 rounded bg-darkblue-300 hover:bg-darkblue-600 hover:text-darkblue-300">
+              Register
               </Link>
-            </div>
-          ) : null}
-        </div>
+          </div>
+        ) : null}
       </div>
-    </nav>
+    </header>
   );
 };
 export default Navbar;

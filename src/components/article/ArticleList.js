@@ -7,6 +7,7 @@ import Article from "./Article";
 
 const ArticleList = ({ ...props }) => {
   const auth = useSelector((state) => state.authReducer);
+
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
@@ -30,9 +31,19 @@ const ArticleList = ({ ...props }) => {
       return <Article key={item.id} {...item} />;
     });
 
-    return <div>{renderedResults}</div>;
+    return (
+      <div className="m-4 flex flex-col">
+        <h1 className="flex justify-center">Welcome, {auth.isLoggedIn ? `${auth.user.userName}` : "Guest"}. Here is what is currently trending around the web3 world.</h1>
+        {renderedResults}
+      </div>
+    );
   } else {
-    return <div>No current articles to render!</div>;
+    return (
+      <div className="m-4 flex flex-col">
+        <h1 className="flex justify-center">Welcome, {auth.isLoggedIn ? `${auth.user.userName}` : "Guest"}. Here is what is currently trending around the web3 world.</h1>
+        No current articles to render!
+      </div>
+    );
   }
 };
 

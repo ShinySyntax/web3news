@@ -22,99 +22,94 @@ const Login = ({ history }) => {
   };
 
   return (
-    <div className="hero is-white">
-      <section className="section is-block is-relative is-small">
-        <div className="container">
-          <header className="has-text-centered">
-            <h1 className="title has-text-weight-bold is-3 is-spaced">Login</h1>
-            <h2 className="subtitle">
-              and get the latest cutting edge web3 news...
+    <div className="flex justify-center rounded-lg">
+      <section className="p-8 shadow antialiased text-darkblue-400">
+        <header className="">
+          <h1 className="font-semibold text-xl text-center">Login</h1>
+          <h2 className="mx-4 text-sm">
+            and get the latest cutting edge web3 news...
               <strong>straight to your homepage</strong>
-            </h2>
-          </header>
-
-          <form onSubmit={submitForm}>
-            <div className="field">
-              <div className="control has-icons-left has-icons-right">
-                <input
-                  type="email"
-                  className="input is-medium"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <span className="icon is-small is-left">
-                  <FontAwesomeIcon
-                    icon={faAt}
-                    size="1x"
-                    className={email ? "has-text-info" : ""}
-                  />
-                </span>
-                <span className="icon is-small is-right">
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    size="1x"
-                    className={email ? "has-text-info" : ""}
-                  />
-                </span>
-              </div>
-              {!email ? (
-                <p className="help is-danger">Please enter your email</p>
-              ) : null}
-            </div>
-
-            <div className="field">
-              <div className="control has-icons-left has-icons-right">
-                <input
-                  type="password"
-                  className="input is-medium"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <span className="icon is-small is-left">
-                  <FontAwesomeIcon
-                    icon={faKey}
-                    size="1x"
-                    className={password.length >= 6 ? "has-text-info" : ""}
-                  />
-                </span>
-                <span className="icon is-small is-right">
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    size="1x"
-                    className={password.length >= 6 ? "has-text-info" : ""}
-                  />
-                </span>
-              </div>
-              {password.length >= 6 ? null : (
-                <p className="help is-danger">
-                  Password must be a minimum of 6 characters
-                </p>
-              )}
-            </div>
-
-            <div className="control">
-              <button
-                className="button is-medium is-fullwidth is-primary"
-                type="submit"
-                name="action"
-              >
-                Submit
+          </h2>
+        </header>
+        <form onSubmit={submitForm}>
+          <div className="m-4">
+            <div className="flex">
+              <span className="m-2">
                 <FontAwesomeIcon
-                  icon={faPaperPlane}
+                  icon={faAt}
                   size="1x"
-                  className={
-                    email && password.length > 6 ? "has-text-info" : ""
-                  }
                 />
-              </button>
-              <p className="has-text-right is-size-6">
-                Don't have an account? <Link to="/register">Register</Link>
-              </p>
+              </span>
+              <input
+                type="email"
+                className="border-2 rounded px-3 py-2 w-full focus:outline-none focus:border-blue-400 focus:shadow"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <span className="m-2">
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  size="1x"
+                  className={email.length > 6 ? "text-darkblue-400" : "text-darkblue-700"}
+                />
+              </span>
             </div>
-          </form>
-        </div>
+            {!email ? (
+              <p className="text-sm font-light ml-8">Please enter your email</p>
+            ) : null}
+          </div>
+
+          <div className="m-4">
+            <div className="flex">
+              <span className="m-2">
+                <FontAwesomeIcon
+                  icon={faKey}
+                  size="1x"
+                />
+              </span>
+              <input
+                type="password"
+                className="border-2 rounded px-3 py-2 w-full focus:outline-none focus:border-blue-400 focus:shadow"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span className="m-2">
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  size="1x"
+                  className={password.length >= 6 ? "text-darkblue-400" : "text-darkblue-700"}
+                />
+              </span>
+            </div>
+            {password.length >= 6 ? null : (
+              <p className="text-sm font-light ml-8">
+                Password must be a minimum of 6 characters
+              </p>
+            )}
+          </div>
+
+          <div className="flex justify-end">
+            <button
+              className="font-bold"
+              type="submit"
+              name="action"
+            >
+              Submit
+                <FontAwesomeIcon
+                icon={faPaperPlane}
+                size="1x"
+                className="ml-2"
+              />
+            </button>
+          </div>
+          <div className="flex justify-end">
+            <p className="font-light">
+              Don't have an account? <Link to="/register" className="font-bold">Register</Link>
+            </p>
+          </div>
+        </form>
       </section>
     </div>
   );

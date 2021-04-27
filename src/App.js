@@ -1,7 +1,9 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"; // THIRD
-import React from "react"; // PARTY
+import { BrowserRouter as Router, Route, Switch, useLocation, useRouteMatch } from "react-router-dom";
+import React from "react";
+import { createBrowserHistory } from 'history';
+import queryString from 'query-string'
 
-import "bulma/css/bulma.css";
+// import "bulma/css/bulma.css";
 import "./assets/main.css";
 import { Toaster } from "react-hot-toast";
 
@@ -18,23 +20,27 @@ import ReadingList from "./components/ReadingList";
 // import * as url from "./assets/images/web3-dev.jpg";
 
 const App = () => {
+  // const { path, url } = useRouteMatch()
+  // console.log(path, url)
+  // const { search } = useLocation()
+  // const { tag } = queryString.parse(search)
+  const history = createBrowserHistory();
+
   return (
-    <Router>
+    <Router history={history}>
       <Navbar />
-      <Toaster position="top-center" />
+      <Toaster position="top-center" toastOptions={{ className: "toast-notif" }} reverseOrder={false} />
       <div
         style={{
           // backgroundImage: `url(${url.default})`,
           // backgroundSize: "cover",
-          // height: "100vh",
-          background: "#171924",
-          position: "relative",
-          top: "24px",
         }}
+        className="bg-darkblue-800 justify-center"
       >
-        <div className="container">
+        <div className="flex flex-row relative top-16">
           <Switch>
             <Route exact path="/" component={Home} />
+            {/* <Route path={`${path}/tag=${tag}`} component={Home} /> */}
             <ProtectedRoute path="/profile" component={UserProfile} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
@@ -44,7 +50,7 @@ const App = () => {
           </Switch>
         </div>
       </div>
-    </Router>
+    </Router >
   );
 };
 

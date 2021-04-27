@@ -1,9 +1,7 @@
 /* @import 'bulma/css/bulma.css'; */
-.navbar.is-dark.is-fixed-top {
-  /* background: #171924; */
-  /* background: #222531; */
-  background: #222531eb;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .coin-marquee-wrapper--dark {
   border-top: unset !important;
@@ -14,108 +12,52 @@
   background: linear-gradient(90deg, rgb(234, 0, 112), rgb(252, 84, 179));
 }
 
-.card.article {
-  background: var(--color-light-neutral-1);
-  margin: 1rem;
-}
-
-.card.article:hover {
-  background: var(--table-row-hover-background-color);
-}
-
-.card.article .card-content p {
-  color: var(--color-light-neutral-4);
-}
-
-.card.article .card-content span.article-vote .has-text-grey-dark svg:hover {
-  color: #fff !important;
-}
-
-.card.article .card-header .card-header-title {
-  color: var(--color-light-neutral-6);
-}
-
-.card.article .card-header .subtitle {
-  color: var(--color-light-neutral-4);
-}
-
-.card-header-date {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-}
-
-.card.article .article-vote-total {
-  color: var(--text-color);
-  margin-top: 8px;
-}
-
-.card.article .card-content .clickable svg {
-  cursor: cursor;
-}
-
-.card-footer {
-  border-top: 1px solid var(--color-light-neutral-1);
-}
-
-.card.article .card-footer .button.is-info {
-  margin: 1rem;
-  background: var(--color-light-neutral-5);
-}
-
-.card.article .card-footer .button.is-info:hover {
-  background: var(--info-icon-color);
-}
-
 .has-text-danger {
   color: var(--text-color-error) !important;
 }
 
-/* animation for price deltas */
-.article-vote-total {
-  color: var(--text-color);
-}
-
-.article-vote-total.vote-total-increase {
+/* Animation for price deltas */
+.vote-total-increase {
   color: #16c784;
+  scale: 2;
 }
 
-.article-vote-total.vote-total-decrease {
+.vote-total-decrease {
   color: #ea3943;
+  scale: 2;
 }
 
-.article-vote-total.vote-total-increase {
-  animation: voteIncrease 3s linear forwards;
+.vote-total-increase {
+  animation: voteIncrease 5s linear forwards;
+  transform: scale(2, 2);
 }
 
-.article-vote-total.vote-total-decrease {
-  animation: voteDecrease 3s linear forwards;
+.vote-total-decrease {
+  animation: voteDecrease 5s linear forwards;
+  transform: scale(2, 2);
 }
 
 @keyframes voteIncrease {
   0% {
     color: #18d00c;
-    opacity: 0;
   }
-  40% {
-    color: #18d00c;
-    opacity: 0.4;
+  50% {
+    transform: scale(2, 2);
   }
   100% {
-    color: var(--text-color);
-    opacity: 1;
+    transform: scale(1, 1);
   }
 }
 
 @keyframes voteDecrease {
   0% {
-    color: #ea3943;
+    color: #cc111a;
   }
-  40% {
-    color: #ea3943;
+  50% {
+    transform: scale(2, 2);
   }
   100% {
-    color: var(--text-color);
+    transform: scale(1, 1);
   }
 }
 
@@ -143,8 +85,6 @@ body {
   --dark-bg: #323546;
 }
 
-.reset-bad-styles {
-  background: rgb(23, 25, 36);
-  position: relative;
-  top: 24px;
+.toast-notif {
+  background-color: #dadada;
 }

@@ -4,9 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowAltCircleUp,
   faArrowAltCircleDown,
+  faEye,
 } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
+
 import { downvote, upvote } from "../../store/actions/upvote";
+import Tag from "./Tag";
 
 const Article = ({
   id,
@@ -16,6 +19,8 @@ const Article = ({
   createdAt,
   interactions,
   voteTotal,
+  views,
+  tag
 }) => {
   const auth = useSelector((state) => state.authReducer);
   const [upvoted, setUpvoted] = useState(false);
@@ -30,7 +35,22 @@ const Article = ({
     if (userInteractions)
       if (userInteractions.upvote) setUpvoted(userInteractions.upvote);
       else if (!userInteractions.upvote) setDownvoted(!userInteractions.upvote);
-  }, [auth]);
+  }, [auth, interactions]);
+
+  useEffect(
+    () => {
+      if (upvoted)
+        setVoteColor('vote-total-increase');
+      else if (downvoted)
+        setVoteColor('vote-total-decrease');
+
+      setTimeout(() => {
+        setVoteColor('');
+      }, 5000)
+
+    },
+    [votes]
+  );
 
   const onUpvote = (e) => {
     if (auth && auth?.isLoggedIn) {
@@ -40,12 +60,10 @@ const Article = ({
             setUpvoted(true);
             setDownvoted(false);
             setVotes(votes + 1);
-            toast.success("Successfully Upvoted!");
+            toast.success("TO THE MOON! 🚀");
           })
           .catch((err) => {
-            toast.error(
-              "Upvoted failed. Please ensure that you are logged in!"
-            );
+            toast.error("Upvoted failed. Please ensure that you are logged in!");
           });
       }
     } else toast.error("Not logged in. Please login to vote on articles.");
@@ -54,35 +72,24 @@ const Article = ({
   const onDownvote = (e) => {
     if (auth && auth?.isLoggedIn) {
       if (!downvoted) {
-        dispatch(
-          downvote({ articleID: id, userID: auth.user.id, upvote: false })
-        )
+        dispatch(downvote({ articleID: id, userID: auth.user.id, upvote: false }))
           .then((res) => {
             setDownvoted(true);
             setUpvoted(false);
             setVotes(votes - 1);
-            toast.success("Successfully Downvoted!");
+            toast.error("DUMP IT! 💩");
           })
           .catch((err) => {
-            toast.error(
-              "Downvoted failed. Please ensure that you are logged in!"
-            );
+            toast.error("Downvoted failed. Please ensure that you are logged in!");
           });
       }
     } else toast.error("Not logged in. Please login to vote on articles.");
   };
 
-  useEffect(
-    (e) => {
-      console.log(e);
-    },
-    [upvote, downvote]
-  );
-
   const getVoteIcons = () => {
     return (
       <div
-        className="columns is-multiline"
+        className="flex"
         data-aos="fade-up"
         data-aos-offset="300"
         data-aos-delay="50"
@@ -92,25 +99,23 @@ const Article = ({
         data-aos-once="true"
         data-aos-anchor-placement="top-bottom"
       >
-        {
-          <div className="column is-half is-size-4 has-text-weight-bold has-text-centered article-vote-total">
-            {votes}
-          </div>
-        }
-        <div className="column is-half">
-          <span className="clickable icon article-vote">
+        <div className="text-center mr-3 border-r-2 pr-3 text-2xl justify-self-center">
+          <p className={`mt-4 ${voteColor}`}>{votes}</p>
+        </div>
+        <div className="">
+          <span className="icon article-vote">
             <FontAwesomeIcon
               icon={faArrowAltCircleUp}
               size="2x"
-              className={upvoted ? "has-text-info" : "has-text-grey-dark"}
+              className={upvoted ? "text-darkblue-100" : "cursor-pointer"}
               onClick={onUpvote}
             />
           </span>
-          <span className="clickable icon article-vote">
+          <span className="icon article-vote">
             <FontAwesomeIcon
               icon={faArrowAltCircleDown}
               size="2x"
-              className={downvoted ? "has-text-danger" : "has-text-grey-dark"}
+              className={downvoted ? "text-darkblue-100" : "cursor-pointer"}
               onClick={onDownvote}
             />
           </span>
@@ -121,7 +126,7 @@ const Article = ({
 
   return (
     <div
-      className="card article"
+      className="m-4 p-5 rounded-lg bg-darkblue-900"
       data-aos="fade-up"
       data-aos-offset="400"
       data-aos-delay="50"
@@ -132,7 +137,7 @@ const Article = ({
       data-aos-anchor-placement="top-bottom"
     >
       <header
-        className="card-header"
+        className=""
         data-aos="fade-in"
         data-aos-offset="400"
         data-aos-delay="50"
@@ -142,12 +147,15 @@ const Article = ({
         data-aos-once="true"
         data-aos-anchor-placement="top-bottom"
       >
-        <p className="card-header-title is-5">{title}</p>
-        <p className="card-header-date subtitle is-7">{date}</p>
+        <p className="font-semibold text-darkblue-200">{title}</p>
+        <div className="flex text-darkblue-500 text-sm">
+          <p className="flex mx-2">{date}</p>
+          <p className="ml-2"><FontAwesomeIcon className="mr-2" icon={faEye} size="1x" />{views}</p>
+        </div>
       </header>
 
       <div
-        className="card-content columns"
+        className="flex"
         data-aos="fade-in"
         data-aos-offset="400"
         data-aos-delay="50"
@@ -157,24 +165,22 @@ const Article = ({
         data-aos-once="true"
         data-aos-anchor-placement="top-bottom"
       >
-        <div className="column is-11">
-          <p className="is-size-7">{description}</p>
-        </div>
-        <div className="column">{getVoteIcons()}</div>
+        <p className="pl-8 py-4 text-sm">{description}</p>
+        <div className="mx-4 self-center">{getVoteIcons()}</div>
       </div>
 
-      <footer className="card-footer columns">
-        <div className="column is-10"></div>
-        <div className="column is-2">
-          <button
-            className="button is-info"
-            onClick={() => (window.location = url)}
-          >
-            READ MORE
-          </button>
+      <footer className="flex justify-between border-t border-darkblue-700 pt-2">
+        <div className="relative inset-0 rounded-full bg-gray-200">
+          <Tag {...tag} />
         </div>
+        <button
+          className="flex self-end text-darkblue-900 p-2 m-1 rounded bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300"
+          onClick={() => (window.location = url)}
+        >
+          READ MORE
+          </button>
       </footer>
-    </div>
+    </div >
   );
 };
 
