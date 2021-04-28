@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Route, Switch, useLocation, useRouteMatch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React from "react";
 import { createBrowserHistory } from 'history';
-import queryString from 'query-string'
+// import queryString from 'query-string'
 
 // import "bulma/css/bulma.css";
 import "./assets/main.css";

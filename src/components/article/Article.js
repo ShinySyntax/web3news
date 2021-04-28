@@ -49,7 +49,7 @@ const Article = ({
       }, 5000)
 
     },
-    [votes]
+    [votes, upvoted, downvoted]
   );
 
   const onUpvote = (e) => {
