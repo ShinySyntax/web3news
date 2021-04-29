@@ -38,4 +38,3 @@ jobs:
           ARGS: "-rltgoDzvO"
           SOURCE: build/
           TARGET: ${{ secrets.REMOTE_TARGET }}
-          EXCLUDE: /node_modules/
