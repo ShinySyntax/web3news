@@ -35,8 +35,8 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.1.5
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_HOST: web3news.app
+          REMOTE_USER: tony
           ARGS: "-rltgoDzvO"
           SOURCE: "build"
           TARGET: ${{ secrets.REMOTE_TARGET }}
