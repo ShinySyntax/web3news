@@ -38,5 +38,5 @@ jobs:
           REMOTE_HOST: web3news.app
           REMOTE_USER: tony
           ARGS: "-rltgoDzvO"
-          SOURCE: "build"
-          TARGET: ${{ secrets.REMOTE_TARGET }}
+          SOURCE: build
+          TARGET: /home/tony
