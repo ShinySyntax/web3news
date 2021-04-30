@@ -29,21 +29,21 @@ jobs:
       - name: Build React App
         run: npm run build
       # - run: npm test
-      # - name: Deploy to server via SSH
-      #   # You may pin to the exact commit or the version.
-      #   # uses: easingthemes/ssh-deploy@9ab39935552e9fe6706e9c9bf2a70a3328a4a5e6
-      #   uses: easingthemes/ssh-deploy@v2.1.5
-      #   env:
-      #     SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-      #     REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-      #     REMOTE_USER: ${{ secrets.REMOTE_USER }}
-      #     ARGS: "-rltgoDzvO"
-      #     SOURCE: "build"
-      #     TARGET: ${{ secrets.REMOTE_TARGET }}
+
       - name: Deploy to server via SSH
         run: |
           cd ~ && mkdir .ssh &&
           touch ~/.ssh/known_hosts &&
-          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/known_hosts
-          rsync -aPvz build tony@143.198.230.98:~/
-          ssh tony@143.198.320.98
+          echo "${{ secrets.SERVER_SSH_PUB_KEY }}" > ~/.ssh/known_hosts
+
+      - name: Deploy to server via SSH
+        # You may pin to the exact commit or the version.
+        # uses: easingthemes/ssh-deploy@9ab39935552e9fe6706e9c9bf2a70a3328a4a5e6
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          ARGS: "-rltgoDzvO"
+          SOURCE: "build"
+          TARGET: ${{ secrets.REMOTE_TARGET }}
