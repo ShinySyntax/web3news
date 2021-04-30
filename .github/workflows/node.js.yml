@@ -44,6 +44,6 @@ jobs:
         run: |
           cd ~ && mkdir .ssh &&
           touch ~/.ssh/known_hosts &&
-          echo "${{ secrets.SSH_HOSTKEY }}" > ~/.ssh/known_hosts
+          echo "${{ secrets.SERVER_SSH_KEY }}" > ~/.ssh/known_hosts
           rsync -aPvz build tony@143.198.230.98:~/
           ssh tony@143.198.320.98
