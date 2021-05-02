@@ -40,7 +40,7 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           ARGS: "-rltgoDzvO"
           SOURCE: "/build"
-      #     TARGET: ${{ secrets.REMOTE_TARGET }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
       # - name: Deploy to server via SSH
       #   run: |
       #     cd ~/ && mkdir -p ~/.ssh/known_hosts &&
