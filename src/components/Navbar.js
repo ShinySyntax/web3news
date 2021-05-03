@@ -6,6 +6,8 @@ import { faConnectdevelop } from "@fortawesome/free-brands-svg-icons";
 
 const Navbar = (...props) => {
   const auth = useSelector((state) => state.authReducer);
+  const BUILD_STATUS =
+    "https://github.com/TensorsWillFlow/web3news/actions/workflows/node.js.yml/badge.svg";
 
   return (
     <header
@@ -15,12 +17,13 @@ const Navbar = (...props) => {
     >
       <div className="">
         <Link className="flex text-darkblue-50" to="/">
-          <FontAwesomeIcon
-            icon={faConnectdevelop}
-            size="2x"
-            className="mx-2"
-          />
+          <FontAwesomeIcon icon={faConnectdevelop} size="2x" className="mx-2" />
           <p className="flex mt-1">Web3News</p>
+          <img
+            src={BUILD_STATUS}
+            alt="Build Status"
+            className="flex mt-2 ml-4 h-4 w-32"
+          />
         </Link>
       </div>
 
@@ -82,12 +85,18 @@ const Navbar = (...props) => {
         </div>
         {!auth.isLoggedIn ? (
           <div className="flex items-center mr-2">
-            <Link to="/login" className="text-darkblue-800 p-2 m-1 rounded bg-darkblue-300 hover:bg-darkblue-600 hover:text-darkblue-300">
+            <Link
+              to="/login"
+              className="text-darkblue-800 p-2 m-1 rounded bg-darkblue-300 hover:bg-darkblue-600 hover:text-darkblue-300"
+            >
               Login
-              </Link>
-            <Link to="/register" className="text-darkblue-800 p-2 m-1 rounded bg-darkblue-300 hover:bg-darkblue-600 hover:text-darkblue-300">
+            </Link>
+            <Link
+              to="/register"
+              className="text-darkblue-800 p-2 m-1 rounded bg-darkblue-300 hover:bg-darkblue-600 hover:text-darkblue-300"
+            >
               Register
-              </Link>
+            </Link>
           </div>
         ) : null}
       </div>
