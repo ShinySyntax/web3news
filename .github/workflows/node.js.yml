@@ -41,11 +41,3 @@ jobs:
           ARGS: "-rltgoDzvO --delete"
           SOURCE: "build/"
           TARGET: ${{ secrets.REMOTE_TARGET }}
-      # - name: Deploy to server via SSH
-      #   run: |
-      #     cd ~/ && mkdir -p ~/.ssh/known_hosts &&
-      #     echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
-      #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > ./private.key
-      #     sudo chmod 600 ./private.key
-      #     rsync -aPvz build tony@143.198.230.98:~/
-      #     ssh tony@143.198.320.98
