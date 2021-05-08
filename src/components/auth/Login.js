@@ -6,12 +6,13 @@ import {
   faAt,
   faKey,
   faPaperPlane,
-  faCheck
+  faCheck,
+  faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { login } from "../../store/actions/auth";
 
-const Login = ({ history }) => {
+const Login = ({ history, show }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -22,27 +23,25 @@ const Login = ({ history }) => {
   };
 
   return (
-    <div className="flex justify-center rounded-lg">
-      <section className="p-8 shadow antialiased text-darkblue-400">
-        <header className="">
-          <h1 className="font-semibold text-xl text-center">Login</h1>
-          <h2 className="mx-4 text-sm">
-            and get the latest cutting edge web3 news...
-              <strong>straight to your homepage</strong>
-          </h2>
-        </header>
+    <div className="fixed pin z-50 overflow-auto w-full max-w-md mt-64 mx-96 bg-darkblue-900 rounded-lg shadow">
+      <div className="flex absolute right-0 p-2 cursor-pointer text-darkblue-700 hover:text-darkblue-50">
+        <FontAwesomeIcon icon={faTimesCircle} size="2x" />
+      </div>
+      <section className="p-8 antialiased text-darkblue-400">
+        <h1 className="font-semibold text-xl text-center">Login</h1>
+        <h2 className="mx-4 text-sm">
+          and get the latest cutting edge web3 news...
+          <strong>straight to your homepage</strong>
+        </h2>
         <form onSubmit={submitForm}>
           <div className="m-4">
             <div className="flex">
               <span className="m-2">
-                <FontAwesomeIcon
-                  icon={faAt}
-                  size="1x"
-                />
+                <FontAwesomeIcon icon={faAt} size="1x" />
               </span>
               <input
                 type="email"
-                className="border-2 rounded px-3 py-2 w-full focus:outline-none focus:border-blue-400 focus:shadow"
+                className="border-2 rounded px-3 py-2 w-full text-darkblue-900 focus:outline-none focus:border-blue-100 focus:shadow"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -51,7 +50,9 @@ const Login = ({ history }) => {
                 <FontAwesomeIcon
                   icon={faCheck}
                   size="1x"
-                  className={email.length > 6 ? "text-darkblue-400" : "text-darkblue-700"}
+                  className={
+                    email.length > 6 ? "text-darkblue-400" : "text-darkblue-700"
+                  }
                 />
               </span>
             </div>
@@ -63,14 +64,11 @@ const Login = ({ history }) => {
           <div className="m-4">
             <div className="flex">
               <span className="m-2">
-                <FontAwesomeIcon
-                  icon={faKey}
-                  size="1x"
-                />
+                <FontAwesomeIcon icon={faKey} size="1x" />
               </span>
               <input
                 type="password"
-                className="border-2 rounded px-3 py-2 w-full focus:outline-none focus:border-blue-400 focus:shadow"
+                className="border-2 rounded px-3 py-2 w-full text-darkblue-900 focus:outline-none focus:border-blue-100 focus:shadow"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -79,7 +77,11 @@ const Login = ({ history }) => {
                 <FontAwesomeIcon
                   icon={faCheck}
                   size="1x"
-                  className={password.length >= 6 ? "text-darkblue-400" : "text-darkblue-700"}
+                  className={
+                    password.length >= 6
+                      ? "text-darkblue-400"
+                      : "text-darkblue-700"
+                  }
                 />
               </span>
             </div>
@@ -92,21 +94,20 @@ const Login = ({ history }) => {
 
           <div className="flex justify-end">
             <button
-              className="font-bold"
+              className="font-bold hover:text-darkblue-50"
               type="submit"
               name="action"
             >
               Submit
-                <FontAwesomeIcon
-                icon={faPaperPlane}
-                size="1x"
-                className="ml-2"
-              />
+              <FontAwesomeIcon icon={faPaperPlane} size="1x" className="ml-2" />
             </button>
           </div>
           <div className="flex justify-end">
             <p className="font-light">
-              Don't have an account? <Link to="/register" className="font-bold">Register</Link>
+              Don't have an account?{" "}
+              <Link to="/register" className="font-bold hover:text-darkblue-50">
+                Register
+              </Link>
             </p>
           </div>
         </form>

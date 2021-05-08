@@ -1,6 +1,6 @@
-import { React, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { React, useState } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faIdBadge,
@@ -10,21 +10,21 @@ import {
   faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { register } from '../../store/actions/auth';
+import { register } from "../../store/actions/auth";
 
-const Register = ({ history }) => {
-  const [userName, setUserName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Register = ({ history, show, handleClose }) => {
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
   const submitForm = (e) => {
     e.preventDefault();
     dispatch(register({ userName, email, password }, history))
-      .then(data => {
+      .then((data) => {
         alert(data);
       })
-      .catch(err => console.error(err.message));
+      .catch((err) => console.error(err.message));
   };
 
   return (
@@ -42,10 +42,7 @@ const Register = ({ history }) => {
             <div className="m-4">
               <div className="flex">
                 <span className="m-2">
-                  <FontAwesomeIcon
-                    icon={faIdBadge}
-                    size="1x"
-                  />
+                  <FontAwesomeIcon icon={faIdBadge} size="1x" />
                 </span>
                 <input
                   type="text"
@@ -58,22 +55,25 @@ const Register = ({ history }) => {
                   <FontAwesomeIcon
                     icon={faCheck}
                     size="1x"
-                    className={userName.length >= 5 ? "text-darkblue-400" : "text-darkblue-700"}
+                    className={
+                      userName.length >= 5
+                        ? "text-darkblue-400"
+                        : "text-darkblue-700"
+                    }
                   />
                 </span>
               </div>
               {userName.length < 5 ? (
-                <p className="text-sm font-light ml-8">Please enter your username</p>
+                <p className="text-sm font-light ml-8">
+                  Please enter your username
+                </p>
               ) : null}
             </div>
 
             <div className="m-4">
               <div className="flex">
                 <span className="m-2">
-                  <FontAwesomeIcon
-                    icon={faAt}
-                    size="1x"
-                  />
+                  <FontAwesomeIcon icon={faAt} size="1x" />
                 </span>
                 <input
                   type="email"
@@ -86,22 +86,23 @@ const Register = ({ history }) => {
                   <FontAwesomeIcon
                     icon={faCheck}
                     size="1x"
-                    className={email ? "text-darkblue-400" : "text-darkblue-700"}
+                    className={
+                      email ? "text-darkblue-400" : "text-darkblue-700"
+                    }
                   />
                 </span>
               </div>
               {!email ? (
-                <p className="text-sm font-light ml-8">Please enter your email</p>
+                <p className="text-sm font-light ml-8">
+                  Please enter your email
+                </p>
               ) : null}
             </div>
 
             <div className="m-4">
               <div className="flex">
                 <span className="m-2">
-                  <FontAwesomeIcon
-                    icon={faKey}
-                    size="1x"
-                  />
+                  <FontAwesomeIcon icon={faKey} size="1x" />
                 </span>
                 <input
                   type="password"
@@ -114,7 +115,11 @@ const Register = ({ history }) => {
                   <FontAwesomeIcon
                     icon={faCheck}
                     size="1x"
-                    className={password.length >= 6 ? "text-darkblue-400" : "text-darkblue-700"}
+                    className={
+                      password.length >= 6
+                        ? "text-darkblue-400"
+                        : "text-darkblue-700"
+                    }
                   />
                 </span>
               </div>
@@ -126,11 +131,7 @@ const Register = ({ history }) => {
             </div>
 
             <div className="flex justify-end">
-              <button
-                className="font-bold"
-                type="submit"
-                name="action"
-              >
+              <button className="font-bold" type="submit" name="action">
                 Submit
                 <FontAwesomeIcon
                   icon={faPaperPlane}
@@ -141,7 +142,10 @@ const Register = ({ history }) => {
             </div>
             <div className="flex justify-end">
               <p className="font-light">
-                Have an account? <Link to="/login" className="font-bold">Login</Link>
+                Have an account?{" "}
+                <Link to="/login" className="font-bold">
+                  Login
+                </Link>
               </p>
             </div>
           </form>
@@ -149,7 +153,6 @@ const Register = ({ history }) => {
       </section>
     </div>
   );
-
 };
 
 export default Register;

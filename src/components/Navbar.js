@@ -22,7 +22,7 @@ const Navbar = (...props) => {
           <img
             src={BUILD_STATUS}
             alt="Build Status"
-            className="flex mt-2 ml-4 h-4 w-32"
+            className="flex mt-2 ml-2 h-4 w-24"
           />
         </Link>
       </div>
