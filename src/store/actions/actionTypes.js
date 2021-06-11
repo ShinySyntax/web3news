@@ -3,8 +3,11 @@ export const LIST_ALL = "LIST_ALL";
 export const LOGIN = "LOGIN";
 export const REGISTER = "REGISTER";
 export const LOGOUT = "LOGOUT";
+
 export const UPVOTE_ARTICLE = "UPVOTE_ARTICLE";
 export const UPVOTE_ARTICLE_FAILURE = "UPVOTE_ARTICLE_FAILURE";
 export const DOWNVOTE_ARTICLE = "DOWNVOTE_ARTICLE";
 export const DOWNVOTE_ARTICLE_FAILURE = "DOWNVOTE_ARTICLE_FAILURE";
 export const GET_VOTE_SUM_TOTAL = "GET_VOTE_SUM_TOTAL";
+
+export const GET_ALL_USERS = "GET_ALL_USERS";

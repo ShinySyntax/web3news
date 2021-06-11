@@ -1,10 +1,16 @@
-import React from 'react';
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faNode, faReact, faHtml5, faCss3Alt, faGithub } from "@fortawesome/free-brands-svg-icons";
+import {
+  faNode,
+  faReact,
+  faHtml5,
+  faCss3Alt,
+  faGithub,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
   return (
-    <footer className="flex justify-items-center text-center">
+    <footer className="justify-items-center text-center">
       <div>
         <p>
           {" Brought to you by the Web 3 Enterprise Adoption Advocacy Team"}

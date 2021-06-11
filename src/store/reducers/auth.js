@@ -6,7 +6,8 @@ const initalState = {
   isLoggedIn: false,
 };
 
-const authReducer = (state = initalState, action) => {
+const authReducer = (state = loadFromLocalStorage() || initalState, action) => {
+  // if no persisted state found in localstorage, reset
   const { type, payload } = action;
 
   switch (type) {
@@ -43,16 +44,16 @@ const saveToLocalStorage = (state) => {
   }
 };
 
-// const loadFromLocalStorage = (state) => {
-//   try {
-//     const serializedState = localStorage.getItem("web3news-user");
-//     if (serializedState === null) return undefined;
-//     else return JSON.parse(serializedState);
-//   } catch (e) {
-//     console.warn(e);
-//     return undefined;
-//   }
-// };
+const loadFromLocalStorage = () => {
+  try {
+    const serializedState = localStorage.getItem("web3news-user");
+    if (serializedState === null) return undefined;
+    else return JSON.parse(serializedState);
+  } catch (e) {
+    console.warn(e);
+    return undefined;
+  }
+};
 
 const clearLocalStorage = (state) => {
   localStorage.removeItem("web3news-user");

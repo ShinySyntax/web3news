@@ -15,6 +15,7 @@ import UserProfile from "./components/Profile";
 import Navbar from "./components/Navbar";
 import NewArticle from "./components/article/New";
 import ReadingList from "./components/ReadingList";
+import Footer from "./components/Footer";
 
 // import AuthToken from "./utils/AuthToken"; // figure persistent sessions out... decide on cookies vs localStorage
 // import * as url from "./assets/images/web3-dev.jpg";
@@ -57,6 +58,7 @@ const App = () => {
             />
           </Switch>
         </div>
+        <Footer />
       </div>
     </Router>
   );

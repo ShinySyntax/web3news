@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 
 import { downvote, upvote } from "../../store/actions/upvote";
 import Tag from "./Tag";
+import SaveToReadingListIcon from "./SaveIcon";
 
 const Article = ({
   id,
@@ -20,9 +21,9 @@ const Article = ({
   interactions,
   voteTotal,
   views,
-  tag
+  tag,
 }) => {
-  const auth = useSelector((state) => state.authReducer);
+  const user = useSelector((state) => state.authReducer);
   const [upvoted, setUpvoted] = useState(false);
   const [downvoted, setDownvoted] = useState(false);
   const [voteColor, setVoteColor] = useState("");
@@ -31,31 +32,27 @@ const Article = ({
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const userInteractions = interactions.find((item) => item.userID === auth.user.id);
+    const userInteractions = interactions.find(
+      (item) => item.userID === user.id
+    );
     if (userInteractions)
       if (userInteractions.upvote) setUpvoted(userInteractions.upvote);
       else if (!userInteractions.upvote) setDownvoted(!userInteractions.upvote);
-  }, [auth, interactions]);
+  }, [user, interactions]);
 
-  useEffect(
-    () => {
-      if (upvoted)
-        setVoteColor('vote-total-increase');
-      else if (downvoted)
-        setVoteColor('vote-total-decrease');
+  useEffect(() => {
+    if (upvoted) setVoteColor("vote-total-increase");
+    else if (downvoted) setVoteColor("vote-total-decrease");
 
-      setTimeout(() => {
-        setVoteColor('');
-      }, 5000)
-
-    },
-    [votes, upvoted, downvoted]
-  );
+    setTimeout(() => {
+      setVoteColor("");
+    }, 5000);
+  }, [votes, upvoted, downvoted]);
 
   const onUpvote = (e) => {
-    if (auth && auth?.isLoggedIn) {
+    if (user && user?.isLoggedIn) {
       if (!upvoted) {
-        dispatch(upvote({ articleID: id, userID: auth.user.id, upvote: true }))
+        dispatch(upvote({ articleID: id, userID: user.id, upvote: true }))
           .then((res) => {
             setUpvoted(true);
             setDownvoted(false);
@@ -63,16 +60,18 @@ const Article = ({
             toast.success("TO THE MOON! 🚀");
           })
           .catch((err) => {
-            toast.error("Upvoted failed. Please ensure that you are logged in!");
+            toast.error(
+              "Upvoted failed. Please ensure that you are logged in!"
+            );
           });
       }
     } else toast.error("Not logged in. Please login to vote on articles.");
   };
 
   const onDownvote = (e) => {
-    if (auth && auth?.isLoggedIn) {
+    if (user && user?.isLoggedIn) {
       if (!downvoted) {
-        dispatch(downvote({ articleID: id, userID: auth.user.id, upvote: false }))
+        dispatch(downvote({ articleID: id, userID: user.id, upvote: false }))
           .then((res) => {
             setDownvoted(true);
             setUpvoted(false);
@@ -80,7 +79,9 @@ const Article = ({
             toast.error("DUMP IT! 💩");
           })
           .catch((err) => {
-            toast.error("Downvoted failed. Please ensure that you are logged in!");
+            toast.error(
+              "Downvoted failed. Please ensure that you are logged in!"
+            );
           });
       }
     } else toast.error("Not logged in. Please login to vote on articles.");
@@ -124,9 +125,13 @@ const Article = ({
     );
   };
 
+  const saveToReadingList = () => {
+    console.log("Saved article to reading list~");
+  };
+
   return (
     <div
-      className="m-4 p-5 rounded-lg bg-darkblue-900"
+      className="m-4 px-5 py-3 rounded-lg bg-darkblue-900"
       data-aos="fade-up"
       data-aos-offset="400"
       data-aos-delay="50"
@@ -147,10 +152,16 @@ const Article = ({
         data-aos-once="true"
         data-aos-anchor-placement="top-bottom"
       >
-        <p className="font-semibold text-darkblue-200">{title}</p>
+        <div className="flex justify-between">
+          <p className="font-semibold text-darkblue-200">{title}</p>
+          <SaveToReadingListIcon callback={saveToReadingList} />
+        </div>
         <div className="flex text-darkblue-500 text-sm">
           <p className="flex mx-2">{date}</p>
-          <p className="ml-2"><FontAwesomeIcon className="mr-2" icon={faEye} size="1x" />{views}</p>
+          <p className="ml-2">
+            <FontAwesomeIcon className="mr-2" icon={faEye} size="1x" />
+            {`${views} total views`}
+          </p>
         </div>
       </header>
 
@@ -178,9 +189,9 @@ const Article = ({
           onClick={() => (window.location = url)}
         >
           READ MORE
-          </button>
+        </button>
       </footer>
-    </div >
+    </div>
   );
 };
 
