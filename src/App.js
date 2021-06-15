@@ -8,17 +8,16 @@ import "./assets/main.css";
 import { Toaster } from "react-hot-toast";
 
 import Home from "./components/Home";
-import Login from "./components/auth/Login";
-import Register from "./components/auth/Register";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UserProfile from "./components/Profile";
 import Navbar from "./components/Navbar";
 import NewArticle from "./components/article/New";
 import ReadingList from "./components/ReadingList";
 import Footer from "./components/Footer";
+import Logout from "./components/auth/Logout";
+import NotFound from "./components/NotFound";
 
-// import AuthToken from "./utils/AuthToken"; // figure persistent sessions out... decide on cookies vs localStorage
-// import * as url from "./assets/images/web3-dev.jpg";
+// import * as url from "./assets/images/laptop.jpg";
 
 const App = () => {
   // const { path, url } = useRouteMatch()
@@ -36,12 +35,11 @@ const App = () => {
         reverseOrder={false}
       />
       <div
-        style={
-          {
-            // backgroundImage: `url(${url.default})`,
-            // backgroundSize: "cover",
-          }
-        }
+        // style={{
+        //   backgroundImage: `url(${url.default})`,
+        //   backgroundSize: "100%",
+        //   backgroundRepeat: "no-repeat",
+        // }}
         className="bg-darkblue-800 justify-center"
       >
         <div className="flex flex-row relative top-16">
@@ -49,13 +47,10 @@ const App = () => {
             <Route exact path="/" component={Home} />
             {/* <Route path={`${path}/tag=${tag}`} component={Home} /> */}
             <ProtectedRoute path="/profile" component={UserProfile} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
+            <Route path="/logout" component={Logout} />
             <ProtectedRoute path="/article/new" component={NewArticle} />
             <ProtectedRoute path="/reading-list" component={ReadingList} />
-            <Route
-              render={() => <h1 className="container">404 PAGE NOT FOUND.</h1>}
-            />
+            <Route component={NotFound} />
           </Switch>
         </div>
         <Footer />

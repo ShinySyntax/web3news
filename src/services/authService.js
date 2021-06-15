@@ -27,9 +27,11 @@ const AuthService = {
     return API.post("/auth/logout", data)
       .then((res) => {
         API.defaults.headers["Authorization"] = "";
-        console.log("res", res.data);
+        return res.data;
       })
-      .catch((err) => console.log("error", err));
+      .catch((err) => {
+        return err.message;
+      });
   },
 };
 

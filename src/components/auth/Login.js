@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,29 +12,37 @@ import {
 
 import { login } from "../../store/actions/auth";
 
-const Login = ({ history, show }) => {
+const Login = ({ setShowModal }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory();
+  const closeLogin = () => {
+    setShowModal(false);
+  };
 
   const submitForm = (e) => {
     e.preventDefault();
-    dispatch(login({ email, password }, history));
+    dispatch(login({ email, password }, history)).then(() => {
+      closeLogin();
+    });
   };
 
   return (
-    <div className="fixed pin z-50 overflow-auto w-full max-w-md mt-64 mx-96 bg-darkblue-900 rounded-lg shadow">
-      <div className="flex absolute right-0 p-2 cursor-pointer text-darkblue-700 hover:text-darkblue-50">
-        <FontAwesomeIcon icon={faTimesCircle} size="2x" />
-      </div>
-      <section className="p-8 antialiased text-darkblue-400">
+    <div className="max-w-md bg-darkblue-900 rounded-lg shadow text-center p-5 flex-auto justify-center">
+      <section className="text-darkblue-400">
+        <div className="flex justify-end relative right-0">
+          <FontAwesomeIcon
+            icon={faTimesCircle}
+            size="2x"
+            onClick={closeLogin}
+            className="cursor-pointer text-darkblue-700 hover:text-darkblue-50"
+          />
+        </div>
         <h1 className="font-semibold text-xl text-center">Login</h1>
-        <h2 className="mx-4 text-sm">
-          and get the latest cutting edge web3 news...
-          <strong>straight to your homepage</strong>
-        </h2>
+        <h2 className="mx-4 text-sm">Welcome back!</h2>
         <form onSubmit={submitForm}>
-          <div className="m-4">
+          <div className="m-2">
             <div className="flex">
               <span className="m-2">
                 <FontAwesomeIcon icon={faAt} size="1x" />
@@ -57,11 +65,10 @@ const Login = ({ history, show }) => {
               </span>
             </div>
             {!email ? (
-              <p className="text-sm font-light ml-8">Please enter your email</p>
+              <p className="text-sm font-light">Please enter your email</p>
             ) : null}
           </div>
-
-          <div className="m-4">
+          <div className="m-2">
             <div className="flex">
               <span className="m-2">
                 <FontAwesomeIcon icon={faKey} size="1x" />
@@ -86,12 +93,11 @@ const Login = ({ history, show }) => {
               </span>
             </div>
             {password.length >= 6 ? null : (
-              <p className="text-sm font-light ml-8">
+              <p className="text-sm font-light">
                 Password must be a minimum of 6 characters
               </p>
             )}
           </div>
-
           <div className="flex justify-end">
             <button
               className="font-bold hover:text-darkblue-50"

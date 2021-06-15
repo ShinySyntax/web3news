@@ -12,7 +12,7 @@ const Tag = ({ id, name, icon }) => {
   else if (name === "Polkadot") imgSrc = dot;
 
   return (
-    <div className="rounded-full flex p-2 bg-darkblue-300 cursor-pointer hover:text-darkblue-900">
+    <div className="rounded-full flex p-2 bg-darkblue-300 cursor-pointer hover:bg-darkblue-700 hover:text-darkblue-300">
       {imgSrc ? <img src={imgSrc} alt={name} className="px-2"></img> : null}
       <button id={id} className="pr-2">
         {name}
