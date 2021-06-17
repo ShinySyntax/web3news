@@ -23,15 +23,12 @@ const AuthService = {
       });
   },
 
-  logout: (data) => {
-    return API.post("/auth/logout", data)
-      .then((res) => {
-        API.defaults.headers["Authorization"] = "";
-        return res.data;
-      })
-      .catch((err) => {
-        return err.message;
-      });
+  logout: () => {
+    try {
+      API.defaults.headers["Authorization"] = "";
+    } catch (err) {
+      console.err("Unable to clear auth header..");
+    }
   },
 };
 

@@ -19,11 +19,8 @@ export const register = (params, history) => (dispatch) => {
     .catch((err) => console.log(err.message));
 };
 
-export const logout = (params, history) => (dispatch) => {
-  return AuthService.logout(params)
-    .then((data) => {
-      dispatch({ type: LOGOUT, payload: data });
-      history.push("/");
-    })
-    .catch((err) => console.log(err.message));
+export const logout = (history) => (dispatch) => {
+  AuthService.logout();
+  dispatch({ type: LOGOUT });
+  history.push("/");
 };
