@@ -185,7 +185,7 @@ const Article = ({
           <Tag {...tag} />
         </div>
         <button
-          className="flex self-end text-darkblue-900 p-2 m-1 rounded bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300"
+          className="hover-transition flex self-end text-darkblue-900 p-2 m-1 rounded bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300"
           onClick={() => (window.location = url)}
         >
           READ MORE
