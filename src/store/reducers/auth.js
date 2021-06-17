@@ -7,7 +7,7 @@ const initalState = {
 };
 
 const authReducer = (state = loadFromLocalStorage() || initalState, action) => {
-  // if no persisted state found in localstorage, reset
+  // if no persisted state found in localstorage, reset state to default
   const { type, payload } = action;
 
   switch (type) {
