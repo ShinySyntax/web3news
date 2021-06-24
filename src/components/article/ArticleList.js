@@ -5,19 +5,16 @@ import toast from "react-hot-toast";
 import ArticleService from "../../services/articleService";
 import Article from "./Article";
 
-const ArticleList = ({ ...props }) => {
+const ArticleList = () => {
   const auth = useSelector((state) => state.authReducer);
-
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      let articleList = await ArticleService.listAll();
-
-      toast.promise(ArticleService.listAll(), {
+      const articleList = await toast.promise(ArticleService.listAll(), {
         loading: "Loading articles...",
         success: "Top articles from the last week loaded",
-        error: "Error when fetching",
+        error: "Error when fetching articles. Please reload the app!",
       });
 
       setArticles(articleList);
@@ -32,15 +29,21 @@ const ArticleList = ({ ...props }) => {
     });
 
     return (
-      <div className="m-4 flex flex-col">
-        <h1 className="flex justify-center">Welcome, {auth.isLoggedIn ? `${auth.user.userName}` : "Guest"}. Here is what is currently trending around the web3 world.</h1>
+      <div className="m-4 overflow-y-auto">
+        <h1 className="flex justify-center">
+          Welcome, {auth.isLoggedIn ? `${auth.user.userName}` : "Guest"}. Here
+          is what is currently trending around the web3 world.
+        </h1>
         {renderedResults}
       </div>
     );
   } else {
     return (
-      <div className="m-4 flex flex-col">
-        <h1 className="flex justify-center">Welcome, {auth.isLoggedIn ? `${auth.user.userName}` : "Guest"}. Here is what is currently trending around the web3 world.</h1>
+      <div className="m-4 overflow-y-auto">
+        <h1 className="flex justify-center">
+          Welcome, {auth.isLoggedIn ? `${auth.user.userName}` : "Guest"}. Here
+          is what is currently trending around the web3 world.
+        </h1>
         No current articles to render!
       </div>
     );

@@ -22,11 +22,7 @@ const SidebarUserUpvoteList = () => {
   });
   return (
     <div className="">
-      {status === "LOADING" ? (
-        <div className="shadow-lg rounded-xl flex-none w-80 md:w-xl">
-          LOADING USERS...
-        </div>
-      ) : null}
+      {status === "LOADING" ? <div className="">LOADING USERS...</div> : null}
       {users ? userList : null}
     </div>
   );

@@ -3,11 +3,13 @@ import API from "./api";
 const AuthService = {
   login: (data) => {
     return API.post("/auth/login", data)
-      .then((res) => {
-        API.defaults.headers["Authorization"] = `Bearer ${res.data.token}`;
-        return res.data;
+      .then(({ data }) => {
+        API.defaults.headers["Authorization"] = `Bearer ${data.token}`;
+        return data;
       })
-      .catch((err) => console.log("error", err));
+      .catch((err) => {
+        throw err;
+      });
   },
 
   register: (data) => {
@@ -19,7 +21,7 @@ const AuthService = {
         }
       })
       .catch((err) => {
-        return err.message;
+        throw err;
       });
   },
 
