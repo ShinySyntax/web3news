@@ -11,7 +11,7 @@ const Modal = ({ show, setShowModal, children }) => {
 
   if (show) {
     return ReactDOM.createPortal(
-      <div className="modal-backdrop min-w-screen h-screen animated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none">
+      <div className="modal-backdrop backdrop-filter backdrop-blur-sm min-w-screen h-screen fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none">
         <div className="modal-box">{children}</div>
       </div>,
       document.getElementById("modal")

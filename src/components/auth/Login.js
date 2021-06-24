@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { login } from "../../store/actions/auth";
+import toast from "react-hot-toast";
 
 const Login = ({ setShowModal }) => {
   const [email, setEmail] = useState("");
@@ -23,9 +24,14 @@ const Login = ({ setShowModal }) => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    dispatch(login({ email, password }, history)).then(() => {
-      closeLogin();
-    });
+    dispatch(login({ email, password }, history))
+      .then(() => {
+        toast.success("Welcome back to web3 🚀🚀🚀");
+        closeLogin();
+      })
+      .catch((err) => {
+        toast.error("Error validating user 💩");
+      });
   };
 
   return (

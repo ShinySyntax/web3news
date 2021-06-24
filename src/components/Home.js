@@ -7,7 +7,7 @@ import ArticleList from "./article/ArticleList";
 import SidebarLeft from "./sidebar/SidebarLeft";
 import SidebarRight from "./sidebar/SidebarRight";
 
-const Home = ({ history }) => {
+const Home = () => {
   AOS.init(); // Initalize animations
 
   return (

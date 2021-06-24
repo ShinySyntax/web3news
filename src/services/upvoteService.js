@@ -6,7 +6,9 @@ const UpvoteService = {
       .then((res) => {
         return res.data;
       })
-      .catch((err) => console.log("error", err));
+      .catch((err) => {
+        throw err;
+      });
   },
 
   downvote: (data) => {
@@ -14,10 +16,12 @@ const UpvoteService = {
       .then((res) => {
         return res.data;
       })
-      .catch((err) => console.log("error", err));
+      .catch((err) => {
+        throw err;
+      });
   },
 
-  getInteractionsForArticle: (data) => {
+  getInteractioFnsForArticle: (data) => {
     const { articleID, userID } = data;
 
     return new Promise((resolve, reject) => {
@@ -29,7 +33,7 @@ const UpvoteService = {
           reject(err);
         });
     });
-  }
-}
+  },
+};
 
 export default UpvoteService;

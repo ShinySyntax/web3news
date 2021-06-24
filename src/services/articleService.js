@@ -1,13 +1,14 @@
 import API from "./api";
 
 const ArticleService = {
-
   post: (data) => {
-    return API.post("/article", data)
+    return API.post("/article/new", data)
       .then((res) => {
         return res.data;
       })
-      .catch((err) => console.log("error", err));
+      .catch((err) => {
+        throw err;
+      });
   },
 
   listAll: () => {
@@ -15,7 +16,9 @@ const ArticleService = {
       .then((res) => {
         return res.data;
       })
-      .catch((err) => console.log("error", err));
+      .catch((err) => {
+        throw err;
+      });
   },
 
   get: (data) => {
@@ -25,9 +28,10 @@ const ArticleService = {
       .then((res) => {
         return res.data;
       })
-      .catch((err) => console.log("error", err));
-  }
-  
+      .catch((err) => {
+        throw err;
+      });
+  },
 };
 
 export default ArticleService;

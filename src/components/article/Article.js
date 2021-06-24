@@ -23,7 +23,7 @@ const Article = ({
   views,
   tag,
 }) => {
-  const user = useSelector((state) => state.authReducer);
+  const { user, isLoggedIn } = useSelector((state) => state.authReducer);
   const [upvoted, setUpvoted] = useState(false);
   const [downvoted, setDownvoted] = useState(false);
   const [voteColor, setVoteColor] = useState("");
@@ -50,7 +50,7 @@ const Article = ({
   }, [votes, upvoted, downvoted]);
 
   const onUpvote = (e) => {
-    if (user && user?.isLoggedIn) {
+    if (user && isLoggedIn) {
       if (!upvoted) {
         dispatch(upvote({ articleID: id, userID: user.id, upvote: true }))
           .then((res) => {
@@ -69,7 +69,7 @@ const Article = ({
   };
 
   const onDownvote = (e) => {
-    if (user && user?.isLoggedIn) {
+    if (user && isLoggedIn) {
       if (!downvoted) {
         dispatch(downvote({ articleID: id, userID: user.id, upvote: false }))
           .then((res) => {
@@ -92,7 +92,7 @@ const Article = ({
       <div
         className="flex"
         data-aos="fade-up"
-        data-aos-offset="300"
+        data-aos-offset="250"
         data-aos-delay="50"
         data-aos-duration="800"
         data-aos-easing="ease-in-out"
@@ -133,7 +133,7 @@ const Article = ({
     <div
       className="m-4 px-5 py-3 rounded-lg bg-darkblue-900"
       data-aos="fade-up"
-      data-aos-offset="400"
+      data-aos-offset="200"
       data-aos-delay="50"
       data-aos-duration="800"
       data-aos-easing="ease-in-out"
@@ -144,7 +144,7 @@ const Article = ({
       <header
         className=""
         data-aos="fade-in"
-        data-aos-offset="400"
+        data-aos-offset="200"
         data-aos-delay="50"
         data-aos-duration="1200"
         data-aos-easing="ease-in-out"
@@ -168,7 +168,7 @@ const Article = ({
       <div
         className="flex"
         data-aos="fade-in"
-        data-aos-offset="400"
+        data-aos-offset="250"
         data-aos-delay="50"
         data-aos-duration="1200"
         data-aos-easing="ease-in-out"
