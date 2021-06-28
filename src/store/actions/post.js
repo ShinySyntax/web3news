@@ -1,8 +1,8 @@
-import ArticleService from "../../services/articleService";
+import PostService from "../../services/postService";
 import { LIST_ALL, POST } from "./actionTypes";
 
 export const post = (params, history) => (dispatch) => {
-  return ArticleService.post(params)
+  return PostService.post(params)
     .then((data) => {
       dispatch({ type: POST, payload: data });
       history.push("/");
@@ -11,7 +11,7 @@ export const post = (params, history) => (dispatch) => {
 };
 
 export const listAll = () => (dispatch) => {
-  return ArticleService.listAll()
+  return PostService.listAll()
     .then((data) => {
       dispatch({ type: LIST_ALL, payload: data });
     })

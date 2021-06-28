@@ -29,8 +29,8 @@ const Login = ({ setShowModal }) => {
         toast.success("Welcome back to web3 🚀🚀🚀");
         closeLogin();
       })
-      .catch((err) => {
-        toast.error("Error validating user 💩");
+      .catch((message) => {
+        toast.error(`${message} 💩`);
       });
   };
 

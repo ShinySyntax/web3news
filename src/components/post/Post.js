@@ -8,22 +8,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
 
-import { downvote, upvote } from "../../store/actions/upvote";
+import { downvote, upvote } from "../../store/actions/interaction";
 import Tag from "./Tag";
 import SaveToReadingListIcon from "./SaveIcon";
 
-const Article = ({
-  id,
-  title,
-  url,
-  description,
-  createdAt,
-  interactions,
-  voteTotal,
-  views,
-  tag,
-}) => {
+const Post = ({ id }) => {
   const { user, isLoggedIn } = useSelector((state) => state.authReducer);
+  const {
+    title,
+    url,
+    description,
+    createdAt,
+    interactions,
+    voteTotal,
+    views,
+    tag,
+  } = useSelector((state) =>
+    state.postReducer.posts.find((post) => post.id === id)
+  );
   const [upvoted, setUpvoted] = useState(false);
   const [downvoted, setDownvoted] = useState(false);
   const [voteColor, setVoteColor] = useState("");
@@ -52,7 +54,7 @@ const Article = ({
   const onUpvote = (e) => {
     if (user && isLoggedIn) {
       if (!upvoted) {
-        dispatch(upvote({ articleID: id, userID: user.id, upvote: true }))
+        dispatch(upvote({ postID: id, userID: user.id, upvote: true }))
           .then((res) => {
             setUpvoted(true);
             setDownvoted(false);
@@ -65,13 +67,13 @@ const Article = ({
             );
           });
       }
-    } else toast.error("Not logged in. Please login to vote on articles.");
+    } else toast.error("Not logged in. Please login to vote on posts.");
   };
 
   const onDownvote = (e) => {
     if (user && isLoggedIn) {
       if (!downvoted) {
-        dispatch(downvote({ articleID: id, userID: user.id, upvote: false }))
+        dispatch(downvote({ postID: id, userID: user.id, upvote: false }))
           .then((res) => {
             setDownvoted(true);
             setUpvoted(false);
@@ -84,7 +86,7 @@ const Article = ({
             );
           });
       }
-    } else toast.error("Not logged in. Please login to vote on articles.");
+    } else toast.error("Not logged in. Please login to vote on posts.");
   };
 
   const getVoteIcons = () => {
@@ -104,7 +106,7 @@ const Article = ({
           <p className={`mt-4 ${voteColor}`}>{votes}</p>
         </div>
         <div className="">
-          <span className="icon article-vote">
+          <span className="icon post-vote">
             <FontAwesomeIcon
               icon={faArrowAltCircleUp}
               size="2x"
@@ -112,7 +114,7 @@ const Article = ({
               onClick={onUpvote}
             />
           </span>
-          <span className="icon article-vote">
+          <span className="icon post-vote">
             <FontAwesomeIcon
               icon={faArrowAltCircleDown}
               size="2x"
@@ -126,7 +128,7 @@ const Article = ({
   };
 
   const saveToReadingList = () => {
-    console.log("Saved article to reading list~");
+    console.log("Saved post to reading list~");
   };
 
   return (
@@ -195,4 +197,4 @@ const Article = ({
   );
 };
 
-export default Article;
+export default Post;

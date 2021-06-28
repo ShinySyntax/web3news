@@ -53,7 +53,7 @@ const Navbar = () => {
               <Link
                 className="m-2 text-darkblue-400 hover:text-darkblue-100"
                 to={{
-                  pathname: "/article/new",
+                  pathname: "/post/new",
                   state: { user: auth.user },
                 }}
               >

@@ -8,20 +8,18 @@ const AuthService = {
         return data;
       })
       .catch((err) => {
-        throw err;
+        throw err?.response?.data?.message;
       });
   },
 
   register: (data) => {
     return API.post("/auth/register", data)
       .then((res) => {
-        if (res.status === "200" && res.statusText === "OK") {
-          API.defaults.headers["Authorization"] = `Bearer ${res.token}`;
-          return res.data;
-        }
+        API.defaults.headers["Authorization"] = `Bearer ${res.token}`;
+        return res.data;
       })
       .catch((err) => {
-        throw err;
+        throw err?.response?.data?.message;
       });
   },
 

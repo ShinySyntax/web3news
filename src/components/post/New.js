@@ -1,30 +1,21 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-import { post } from "../../store/actions/article";
-import { getAllTags } from "../../store/actions/tag";
+import { post } from "../../store/actions/post";
+import TagDropdown from "./TagDropdown";
 
-const Article = (props) => {
+const Post = (props) => {
   const auth = useSelector((state) => state.authReducer);
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
   const [description, setDescription] = useState("");
-  const [tags, setTags] = useState([]);
   const [tag, setTag] = useState("DEFAULT");
   const dispatch = useDispatch();
   const history = useHistory();
-
-  useEffect(() => {
-    const getTags = async () => {
-      const tagList = await getAllTags();
-      setTags(tagList);
-    };
-    getTags();
-  }, []);
 
   const handleChange = (e) => {
     setTag(e.target.value);
@@ -47,12 +38,12 @@ const Article = (props) => {
   return (
     <div className="container h-screen mx-auto">
       <div className="mb-2">
-        <label htmlFor="article-title" className="text-darkblue-400">
-          Article Title
+        <label htmlFor="post-title" className="text-darkblue-400">
+          Post Title
         </label>
         <input
           placeholder="Title"
-          id="article-title"
+          id="post-title"
           type="text"
           autoFocus={true}
           autoComplete="off"
@@ -62,11 +53,11 @@ const Article = (props) => {
         />
       </div>
       <div className="mb-2">
-        <label htmlFor="article-url" className="text-darkblue-400">
-          Article URL
+        <label htmlFor="post-url" className="text-darkblue-400">
+          Post URL
         </label>
         <input
-          id="article-url"
+          id="post-url"
           type="text"
           autoComplete="off"
           className="border-1 rounded p-2 w-full focus:outline-none focus:border-blue-400 focus:shadow"
@@ -76,8 +67,8 @@ const Article = (props) => {
         />
       </div>
       <div className="mb-2">
-        <label htmlFor="article-description" className="text-darkblue-400">
-          Article Description
+        <label htmlFor="post-description" className="text-darkblue-400">
+          Post Description
         </label>
         <div className="border-1 rounded w-full focus:outline-none focus:border-blue-400 focus:shadow">
           <CKEditor
@@ -98,11 +89,11 @@ const Article = (props) => {
         </div>
       </div>
       <div className="mb-2">
-        <label htmlFor="article-tag" className="text-darkblue-400">
-          Article Description
+        <label htmlFor="post-tag" className="text-darkblue-400">
+          Tags
         </label>
-        <select
-          id={"article-tag"}
+        {/* <select
+          id={"post-tag"}
           onChange={handleChange}
           className="border-1 rounded p-2 w-full focus:outline-none focus:border-blue-400 cursor-pointer"
         >
@@ -112,7 +103,8 @@ const Article = (props) => {
               {tag.name}
             </option>
           ))}
-        </select>
+        </select> */}
+        <TagDropdown callback={handleChange} />
       </div>
 
       <div className="flex justify-end font-bold">
@@ -120,11 +112,11 @@ const Article = (props) => {
           className="hover-transition text-darkblue-800 p-2 m-1 rounded bg-darkblue-300 hover:bg-darkblue-600 hover:text-darkblue-300"
           onClick={onSubmit}
         >
-          Submit Article
+          Submit Post
         </button>
       </div>
     </div>
   );
 };
 
-export default Article;
+export default Post;
