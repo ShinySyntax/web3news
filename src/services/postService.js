@@ -1,8 +1,8 @@
 import API from "./api";
 
-const ArticleService = {
+const PostService = {
   post: (data) => {
-    return API.post("/article/new", data)
+    return API.post("/post/new", data)
       .then((res) => {
         return res.data;
       })
@@ -12,7 +12,7 @@ const ArticleService = {
   },
 
   listAll: () => {
-    return API.get("/article/listAll")
+    return API.get("/post/listAll")
       .then((res) => {
         return res.data;
       })
@@ -24,7 +24,7 @@ const ArticleService = {
   get: (data) => {
     const { id } = data;
 
-    return API.post(`/article/${id}`, data)
+    return API.post(`/post/${id}`, data)
       .then((res) => {
         return res.data;
       })
@@ -34,4 +34,4 @@ const ArticleService = {
   },
 };
 
-export default ArticleService;
+export default PostService;

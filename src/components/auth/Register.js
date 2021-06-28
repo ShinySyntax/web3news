@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { register } from "../../store/actions/auth";
+import toast from "react-hot-toast";
 
 const Register = ({ setShowModal }) => {
   const [userName, setUserName] = useState("");
@@ -25,9 +26,14 @@ const Register = ({ setShowModal }) => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    dispatch(register({ userName, email, password }, history)).then(() => {
-      closeRegister();
-    });
+    dispatch(register({ userName, email, password }, history))
+      .then(() => {
+        toast.success("Welcome to web3 🚀🚀🚀");
+        closeRegister();
+      })
+      .catch((message) => {
+        toast.error(`${message} 💩`);
+      });
   };
 
   return (

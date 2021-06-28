@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React from "react";
-import { createBrowserHistory } from "history";
 // import queryString from 'query-string'
 
 import "./assets/main.css";
@@ -11,7 +10,7 @@ import Home from "./components/Home";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UserProfile from "./components/Profile";
 import Navbar from "./components/Navbar";
-import NewArticle from "./components/article/New";
+import NewPost from "./components/post/New";
 import ReadingList from "./components/ReadingList";
 import Logout from "./components/auth/Logout";
 import NotFound from "./components/NotFound";
@@ -21,10 +20,9 @@ const App = () => {
   // console.log(path, url)
   // const { search } = useLocation()
   // const { tag } = queryString.parse(search)
-  const history = createBrowserHistory();
 
   return (
-    <Router history={history}>
+    <Router>
       <Toaster
         position="top-center"
         toastOptions={{ className: "toast-notif" }}
@@ -43,7 +41,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           {/* <Route path={`${path}/tag=${tag}`} component={Home} /> */}
           <ProtectedRoute path="/profile" component={UserProfile} />
-          <ProtectedRoute path="/article/new" component={NewArticle} />
+          <ProtectedRoute path="/post/new" component={NewPost} />
           <ProtectedRoute path="/reading-list" component={ReadingList} />
           <Route path="/logout" component={Logout} />
           <Route component={NotFound} />
