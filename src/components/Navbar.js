@@ -18,15 +18,9 @@ const Navbar = () => {
   const onShowRegister = () => {
     setShowRegister(true);
   };
-  const BUILD_STATUS =
-    "https://github.com/TensorsWillFlow/web3news/actions/workflows/node.js.yml/badge.svg";
 
   return (
-    <header
-      className="fixed bg-darkblue-800 bg-opacity-95 shadow-md z-50 w-full px-1 py-1 flex justify-between items-center"
-      role="navigation"
-      aria-label="main navigation"
-    >
+    <header className="fixed bg-darkblue-800 bg-opacity-95 shadow-md z-50 w-full px-1 py-1 flex justify-between items-center">
       {showLogin ? (
         <Modal show={showLogin}>
           <Login setShowModal={setShowLogin} />
@@ -38,14 +32,9 @@ const Navbar = () => {
         </Modal>
       ) : null}
       <div className="">
-        <Link className="flex text-darkblue-50" to="/">
+        <Link className="flex text-darkblue-50 hover-transition" to="/">
           <FontAwesomeIcon icon={faConnectdevelop} size="2x" className="mx-2" />
           <p className="flex mt-1">Web3News</p>
-          <img
-            src={BUILD_STATUS}
-            alt="Build Status"
-            className="flex mt-2 ml-2 h-4 w-24"
-          />
         </Link>
       </div>
 
@@ -64,11 +53,11 @@ const Navbar = () => {
               <Link
                 className="m-2 text-darkblue-400 hover:text-darkblue-100"
                 to={{
-                  pathname: "/article/new",
+                  pathname: "/post/new",
                   state: { user: auth.user },
                 }}
               >
-                <i className="material-icons">add</i>
+                <i className="material-icons hover-transition">add</i>
               </Link>
               <Link
                 className="m-2 text-darkblue-400 hover:text-darkblue-100"
@@ -77,7 +66,25 @@ const Navbar = () => {
                   state: { user: auth.user },
                 }}
               >
-                <i className="material-icons">chrome_reader_mode</i>
+                <i className="material-icons hover-transition">menu_book</i>
+              </Link>
+              <Link
+                to={{
+                  pathname: "/notifications",
+                  state: { user: auth.user },
+                }}
+                className="m-2 text-darkblue-400 hover:text-darkblue-100"
+              >
+                <i className="material-icons hover-transition">notifications</i>
+              </Link>
+              <Link
+                to={{
+                  pathname: "/chat",
+                  state: { user: auth.user },
+                }}
+                className="m-2 text-darkblue-400 hover:text-darkblue-100"
+              >
+                <i className="material-icons hover-transition">chat</i>
               </Link>
               <Link
                 to={{
@@ -86,7 +93,9 @@ const Navbar = () => {
                 }}
                 className="m-2 text-darkblue-400 hover:text-darkblue-100"
               >
-                <i className="material-icons">account_circle</i>
+                <i className="material-icons hover-transition">
+                  account_circle
+                </i>
               </Link>
               <Link
                 className="m-2 text-darkblue-400 hover:text-darkblue-100"
@@ -94,7 +103,7 @@ const Navbar = () => {
                   pathname: "/logout",
                 }}
               >
-                <i className="material-icons">logout</i>
+                <i className="material-icons hover-transition">logout</i>
               </Link>
             </>
           ) : null}

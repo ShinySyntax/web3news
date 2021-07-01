@@ -10,11 +10,9 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="justify-items-center text-center">
+    <footer className="justify-items-center text-center relative pin-b top-16">
       <div>
-        <p>
-          {" Brought to you by the Web 3 Enterprise Adoption Advocacy Team"}
-        </p>
+        <p>{"Brought to you by the Web 3 Enterprise Adoption Advocacy Team"}</p>
         <p>Built with the following technologies:</p>
         <span className="m-2" style={{ color: "#689f63" }}>
           <FontAwesomeIcon icon={faNode} size="2x" />
