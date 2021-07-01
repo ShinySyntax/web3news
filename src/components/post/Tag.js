@@ -15,7 +15,7 @@ const Tag = ({ id, name, icon }) => {
   }, [name]);
 
   return (
-    <div className="hover-transition rounded-full flex p-2 bg-darkblue-300 cursor-pointer hover:bg-darkblue-700 hover:text-darkblue-300">
+    <div className="hover-transition rounded-full flex p-1 cursor-pointer bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300">
       {imgSrc ? <img src={imgSrc} alt={name} className="px-2"></img> : null}
       <button id={id} className="pr-2">
         {name}

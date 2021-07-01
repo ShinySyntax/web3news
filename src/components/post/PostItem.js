@@ -12,7 +12,7 @@ import { downvote, upvote } from "../../store/actions/interaction";
 import Tag from "./Tag";
 import SaveToReadingListIcon from "./SaveIcon";
 
-const Post = ({ id }) => {
+const PostItem = ({ id }) => {
   const { user, isLoggedIn } = useSelector((state) => state.authReducer);
   const {
     title,
@@ -133,7 +133,7 @@ const Post = ({ id }) => {
 
   return (
     <div
-      className="m-4 px-5 py-3 rounded-lg bg-darkblue-900"
+      className="m-4 px-5 pt-3 rounded-lg bg-darkblue-900"
       data-aos="fade-up"
       data-aos-offset="200"
       data-aos-delay="50"
@@ -154,13 +154,15 @@ const Post = ({ id }) => {
         data-aos-once="true"
         data-aos-anchor-placement="top-bottom"
       >
-        <div className="flex justify-between">
+        <div className="flex justify-between h-6">
           <p className="font-semibold text-darkblue-200">{title}</p>
           <SaveToReadingListIcon callback={saveToReadingList} />
         </div>
-        <div className="flex text-darkblue-500 text-sm">
-          <p className="flex mx-2">{date}</p>
-          <p className="ml-2">
+        <div className="flex text-darkblue-500 text-xs">
+          <span className="flex mr-2">
+            <p>posted on: {date}</p>
+          </span>
+          <p className="">
             <FontAwesomeIcon className="mr-2" icon={faEye} size="1x" />
             {`${views} total views`}
           </p>
@@ -182,8 +184,8 @@ const Post = ({ id }) => {
         <div className="mx-4 self-center">{getVoteIcons()}</div>
       </div>
 
-      <footer className="flex justify-between border-t border-darkblue-700 pt-2">
-        <div className="relative inset-0 rounded-full bg-gray-200">
+      <footer className="flex justify-between border-t border-darkblue-700 py-2">
+        <div className="relative inset-0 rounded-full bg-gray-200 top-1">
           <Tag {...tag} />
         </div>
         <button
@@ -197,4 +199,4 @@ const Post = ({ id }) => {
   );
 };
 
-export default Post;
+export default PostItem;
