@@ -7,7 +7,7 @@ const SaveToReadingListIcon = ({ callback }) => {
       <FontAwesomeIcon
         icon={faBookmark}
         size="2x"
-        className="text-darkblue-300 hover:text-darkblue-700 cursor-pointer w-1/12"
+        className="hover-transition text-darkblue-300 hover:text-darkblue-700 cursor-pointer w-1/12"
       />
       <button onClick={callback()}></button>
     </div>
