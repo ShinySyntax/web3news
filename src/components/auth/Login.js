@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { login } from "../../store/actions/auth";
+import toast from "react-hot-toast";
 
 const Login = ({ setShowModal }) => {
   const [email, setEmail] = useState("");
@@ -23,14 +24,25 @@ const Login = ({ setShowModal }) => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    dispatch(login({ email, password }, history)).then(() => {
-      closeLogin();
-    });
+    dispatch(login({ email, password }, history))
+      .then(() => {
+        toast.success("Welcome back to web3 🚀🚀🚀");
+        closeLogin();
+      })
+      .catch((message) => {
+        toast.error(`${message} 💩`);
+      });
   };
 
   return (
-    <div className="max-w-md bg-darkblue-900 rounded-lg shadow text-center p-5 flex-auto justify-center">
-      <section className="text-darkblue-400">
+    <div className="max-w-xl bg-darkblue-900 rounded-lg shadow flex flex-row">
+      <div className="flex w-72">
+        <img
+          src="https://res.cloudinary.com/daily-now/image/upload/v1594561638/referrals/cover1.jpg"
+          alt="Web3News"
+        />
+      </div>
+      <div className="w-96 text-center p-5 justify-center text-darkblue-400">
         <div className="flex justify-end relative right-0">
           <FontAwesomeIcon
             icon={faTimesCircle}
@@ -117,7 +129,7 @@ const Login = ({ setShowModal }) => {
             </p>
           </div>
         </form>
-      </section>
+      </div>
     </div>
   );
 };

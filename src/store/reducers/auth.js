@@ -1,4 +1,8 @@
-import { LOGIN, LOGOUT, REGISTER } from "../actions/actionTypes";
+import {
+  LOGIN_SUCCESS,
+  LOGOUT,
+  REGISTER_SUCCESS,
+} from "../actions/actionTypes";
 
 const initalState = {
   user: {},
@@ -11,7 +15,7 @@ const authReducer = (state = loadFromLocalStorage() || initalState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case LOGIN:
+    case LOGIN_SUCCESS:
       const newLoginState = {
         ...state,
         ...payload,
@@ -19,7 +23,7 @@ const authReducer = (state = loadFromLocalStorage() || initalState, action) => {
       };
       saveToLocalStorage(newLoginState);
       return newLoginState;
-    case REGISTER:
+    case REGISTER_SUCCESS:
       const newRegisterState = {
         ...state,
         ...payload,

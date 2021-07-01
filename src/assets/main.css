@@ -1,7 +1,28 @@
-/* @import 'bulma/css/bulma.css'; */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #cad5e8;
+  border-radius: 100vh;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #0f172a;
+  border-radius: 100vh;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
 
 .coin-marquee-wrapper--dark {
   border-top: unset !important;
@@ -67,4 +88,16 @@
 
 .modal-backdrop {
   background-color: rgba(0, 0, 0, 0.7);
+}
+
+.hover-transition {
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.hover-transition:hover {
+  transform: scale(1.12);
+  opacity: 0.95;
 }

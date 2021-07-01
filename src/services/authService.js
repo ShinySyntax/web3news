@@ -3,23 +3,23 @@ import API from "./api";
 const AuthService = {
   login: (data) => {
     return API.post("/auth/login", data)
-      .then((res) => {
-        API.defaults.headers["Authorization"] = `Bearer ${res.data.token}`;
-        return res.data;
+      .then(({ data }) => {
+        API.defaults.headers["Authorization"] = `Bearer ${data.token}`;
+        return data;
       })
-      .catch((err) => console.log("error", err));
+      .catch((err) => {
+        throw err?.response?.data?.message;
+      });
   },
 
   register: (data) => {
     return API.post("/auth/register", data)
       .then((res) => {
-        if (res.status === "200" && res.statusText === "OK") {
-          API.defaults.headers["Authorization"] = `Bearer ${res.token}`;
-          return res.data;
-        }
+        API.defaults.headers["Authorization"] = `Bearer ${res.token}`;
+        return res.data;
       })
       .catch((err) => {
-        return err.message;
+        throw err?.response?.data?.message;
       });
   },
 
