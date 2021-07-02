@@ -37,8 +37,14 @@ const Register = ({ setShowModal }) => {
   };
 
   return (
-    <div className="max-w-md bg-darkblue-900 rounded-lg shadow text-center p-5 flex-auto justify-center">
-      <section className="text-darkblue-400">
+    <div className="max-w-2xl bg-darkblue-900 rounded-lg shadow flex flex-row">
+      <div className="flex w-full">
+        <img
+          src="https://res.cloudinary.com/daily-now/image/upload/v1594561638/referrals/cover1.jpg"
+          alt="Web3News"
+        />
+      </div>
+      <div className="w-full text-center p-5 justify-center text-darkblue-400">
         <div className="flex justify-end relative right-0">
           <FontAwesomeIcon
             icon={faTimesCircle}
@@ -155,7 +161,7 @@ const Register = ({ setShowModal }) => {
             </p>
           </div>
         </form>
-      </section>
+      </div>
     </div>
   );
 };
