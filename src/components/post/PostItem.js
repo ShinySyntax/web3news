@@ -180,7 +180,7 @@ const PostItem = ({ id }) => {
         data-aos-once="true"
         data-aos-anchor-placement="top-bottom"
       >
-        <p className="pl-8 py-4 text-sm">{description}</p>
+        <p className="pl-8 py-4 text-darkblue-400 text-sm">{description}</p>
         <div className="mx-4 self-center">{getVoteIcons()}</div>
       </div>
 

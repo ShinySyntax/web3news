@@ -6,7 +6,9 @@ const TagService = {
       .then((res) => {
         return res.data;
       })
-      .catch((err) => console.log("error", err));
+      .catch((err) => {
+        throw err;
+      });
   },
 };
 
