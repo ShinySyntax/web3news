@@ -14,6 +14,7 @@ import NewPost from "./components/post/New";
 import ReadingList from "./components/ReadingList";
 import Logout from "./components/auth/Logout";
 import NotFound from "./components/NotFound";
+import ChatNotification from "./components/ChatNotification";
 
 const App = () => {
   // const { path, url } = useRouteMatch()
@@ -30,7 +31,7 @@ const App = () => {
       />
       <Navbar />
       <div
-        className="flex flex-row relative top-16 bg-darkblue-800"
+        className="flex flex-row max-h-screen overflow-y-hidden relative top-16 bg-darkblue-800"
         // style={{
         //   backgroundImage: `url(${url.default})`,
         //   backgroundSize: "100%",
@@ -47,6 +48,7 @@ const App = () => {
           <Route component={NotFound} />
         </Switch>
       </div>
+      <ChatNotification />
     </Router>
   );
 };

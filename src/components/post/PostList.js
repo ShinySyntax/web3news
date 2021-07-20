@@ -26,7 +26,7 @@ const PostList = () => {
       return <PostItem key={item.id} id={item.id} />;
     });
 
-    return <div className="my-6">{renderedResults}</div>;
+    return <div className="my-6 overflow-y-auto">{renderedResults}</div>;
   } else {
     return (
       <div className="my-6">
