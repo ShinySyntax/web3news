@@ -31,7 +31,7 @@ const TagDropdownItem = ({ id, name, icon }) => {
             </div>
           </div>
           <div className="w-1/2 flex">
-            <div className="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-darkblue-200 bg-darkblue-400">
+            <div className="flex justify-center items-center m-1 font-medium py-1 px-2 rounded-full text-darkblue-200 bg-darkblue-400">
               <div className="text-xs font-normal leading-none max-w-full flex-initial">
                 HOT!
               </div>

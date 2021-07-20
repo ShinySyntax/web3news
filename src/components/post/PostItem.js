@@ -54,7 +54,7 @@ const PostItem = ({ id }) => {
   const onUpvote = (e) => {
     if (user && isLoggedIn) {
       if (!upvoted) {
-        dispatch(upvote({ postID: id, userID: user.id, upvote: true }))
+        dispatch(upvote({ postID: id, userID: user.id }))
           .then((res) => {
             setUpvoted(true);
             setDownvoted(false);
@@ -73,7 +73,7 @@ const PostItem = ({ id }) => {
   const onDownvote = (e) => {
     if (user && isLoggedIn) {
       if (!downvoted) {
-        dispatch(downvote({ postID: id, userID: user.id, upvote: false }))
+        dispatch(downvote({ postID: id, userID: user.id }))
           .then((res) => {
             setDownvoted(true);
             setUpvoted(false);
@@ -102,7 +102,7 @@ const PostItem = ({ id }) => {
         data-aos-once="true"
         data-aos-anchor-placement="top-bottom"
       >
-        <div className="text-center mr-3 border-r-2 pr-3 text-2xl justify-self-center">
+        <div className="text-center mr-3 border-r-2 pr-3 text-2xl justify-self-center text-darkblue-500">
           <p className={`mt-4 ${voteColor}`}>{votes}</p>
         </div>
         <div className="">

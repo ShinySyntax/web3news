@@ -68,7 +68,7 @@ const TagDropdown = ({ callback }) => {
               </div>
             </div>
             <div
-              className={`relative shadow bg-white top-100 z-40 w-full lef-0 rounded max-h-select overflow-y-auto overflow-x-hidden ${activeClass}`}
+              className={`relative shadow bg-darkblue-700 top-100 z-40 w-full lef-0 rounded max-h-select overflow-y-auto overflow-x-hidden ${activeClass}`}
             >
               <div className="flex flex-col w-full max-h-40">
                 {tags ? generateTags() : null}

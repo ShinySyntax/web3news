@@ -35,7 +35,7 @@ const Login = ({ setShowModal }) => {
   };
 
   return (
-    <div className="max-w-xl bg-darkblue-900 rounded-lg shadow flex flex-row">
+    <div className="flex flex-row max-w-xl bg-darkblue-900 rounded-lg shadow">
       <div className="flex w-72">
         <img
           src="https://res.cloudinary.com/daily-now/image/upload/v1594561638/referrals/cover1.jpg"
