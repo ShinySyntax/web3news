@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Plyr from "plyr-react";
-import "plyr-react/dist/plyr.css";
+import "../assets/plyr.css";
 
 import DefiWhiteboard from "../assets/videos/defi-whiteboard.mp4";
 import CardanoWhiteboard from "../assets/videos/cardano-whiteboard.mp4";
@@ -60,7 +60,9 @@ const VideoPlayer = () => {
           <div className="top-0 cursor-pointer text-darkblue-300 hover:text-darkblue-600">
             <FontAwesomeIcon
               icon={isCollapsed ? faPlus : faMinus}
-              title="Minimize News Player"
+              title={
+                isCollapsed ? "Expand News Player" : "Minimize News Player"
+              }
               onClick={handleClick}
             />
           </div>
