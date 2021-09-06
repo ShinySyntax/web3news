@@ -5,6 +5,7 @@ import {
   faArrowAltCircleUp,
   faArrowAltCircleDown,
   faEye,
+  faCommentAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
 
@@ -23,6 +24,7 @@ const PostItem = ({ id }) => {
     voteTotal,
     views,
     tag,
+    comments,
   } = useSelector((state) =>
     state.postReducer.posts.find((post) => post.id === id)
   );
@@ -45,7 +47,6 @@ const PostItem = ({ id }) => {
   useEffect(() => {
     if (upvoted) setVoteColor("vote-total-increase");
     else if (downvoted) setVoteColor("vote-total-decrease");
-
     setTimeout(() => {
       setVoteColor("");
     }, 5000);
@@ -93,14 +94,14 @@ const PostItem = ({ id }) => {
     return (
       <div
         className="flex"
-        data-aos="fade-up"
-        data-aos-offset="250"
-        data-aos-delay="50"
-        data-aos-duration="800"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="true"
-        data-aos-anchor-placement="top-bottom"
+        // data-aos="fade-up"
+        // data-aos-offset="250"
+        // data-aos-delay="50"
+        // data-aos-duration="800"
+        // data-aos-easing="ease-in-out"
+        // data-aos-mirror="true"
+        // data-aos-once="true"
+        // data-aos-anchor-placement="top-bottom"
       >
         <div className="text-center mr-3 border-r-2 pr-3 text-2xl justify-self-center text-darkblue-500">
           <p className={`mt-4 ${voteColor}`}>{votes}</p>
@@ -134,25 +135,25 @@ const PostItem = ({ id }) => {
   return (
     <div
       className="m-4 px-5 pt-3 rounded-lg bg-darkblue-900"
-      data-aos="fade-up"
-      data-aos-offset="200"
-      data-aos-delay="50"
-      data-aos-duration="800"
-      data-aos-easing="ease-in-out"
-      data-aos-mirror="true"
-      data-aos-once="true"
-      data-aos-anchor-placement="top-bottom"
+      // data-aos="fade-up"
+      // data-aos-offset="200"
+      // data-aos-delay="50"
+      // data-aos-duration="800"
+      // data-aos-easing="ease-in-out"
+      // data-aos-mirror="true"
+      // data-aos-once="true"
+      // data-aos-anchor-placement="top-bottom"
     >
       <header
         className=""
-        data-aos="fade-in"
-        data-aos-offset="200"
-        data-aos-delay="50"
-        data-aos-duration="1200"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="true"
-        data-aos-anchor-placement="top-bottom"
+        // data-aos="fade-in"
+        // data-aos-offset="200"
+        // data-aos-delay="50"
+        // data-aos-duration="1200"
+        // data-aos-easing="ease-in-out"
+        // data-aos-mirror="true"
+        // data-aos-once="true"
+        // data-aos-anchor-placement="top-bottom"
       >
         <div className="flex justify-between h-6">
           <p className="font-semibold text-darkblue-200">{title}</p>
@@ -171,29 +172,41 @@ const PostItem = ({ id }) => {
 
       <div
         className="flex"
-        data-aos="fade-in"
-        data-aos-offset="250"
-        data-aos-delay="50"
-        data-aos-duration="1200"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="true"
-        data-aos-anchor-placement="top-bottom"
+        // data-aos="fade-in"
+        // data-aos-offset="250"
+        // data-aos-delay="50"
+        // data-aos-duration="1200"
+        // data-aos-easing="ease-in-out"
+        // data-aos-mirror="true"
+        // data-aos-once="true"
+        // data-aos-anchor-placement="top-bottom"
       >
         <p className="pl-8 py-4 text-darkblue-400 text-sm">{description}</p>
         <div className="mx-4 self-center">{getVoteIcons()}</div>
       </div>
 
-      <footer className="flex justify-between border-t border-darkblue-700 py-2">
-        <div className="relative inset-0 rounded-full bg-gray-200 top-1">
+      <footer className="flex justify-between border-t border-darkblue-700 py-3">
+        <div className="relative rounded-full bg-gray-200 top-1">
           <Tag {...tag} />
         </div>
-        <button
-          className="hover-transition flex self-end text-darkblue-900 p-2 m-1 rounded bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300"
-          onClick={() => (window.location = url)}
-        >
-          READ MORE
-        </button>
+        <div className="">
+          <div className="relative inline-block top-2 right-2">
+            <FontAwesomeIcon
+              icon={faCommentAlt}
+              size="2x"
+              className="text-darkblue-300 cursor-pointer hover:text-darkblue-700 hover-transition"
+            />
+            <span className="relative bottom-2 right-5 z-10 hover-transition select-none font-semibold">
+              {comments.length}
+            </span>
+          </div>
+          <button
+            className="hover-transition text-darkblue-900 p-2 rounded bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300"
+            onClick={() => (window.location = url)}
+          >
+            READ MORE
+          </button>
+        </div>
       </footer>
     </div>
   );
