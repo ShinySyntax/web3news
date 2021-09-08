@@ -35,9 +35,10 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build": "GENERATE_SOURCEMAP=false craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "update-browsers": "npx browserslist@latest --update-db"
   },
   "eslintConfig": {
     "extends": [
