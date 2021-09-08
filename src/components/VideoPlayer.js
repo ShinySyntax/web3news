@@ -24,7 +24,7 @@ const VideoPlayer = () => {
       },
       {
         title: "What is Cardano?",
-        text: "The operation system of the internet. Secure, scalable and interoperable proof-of-stake blockchain, with digital identity built in.",
+        text: "The operating system of the internet. Secure, scalable and interoperable proof-of-stake blockchain, with digital identity built in.",
         src: CardanoWhiteboard,
         provider: "html5",
       },
