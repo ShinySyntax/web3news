@@ -156,7 +156,7 @@ const PostItem = ({ id }) => {
         // data-aos-anchor-placement="top-bottom"
       >
         <div className="flex justify-between h-6">
-          <p className="font-semibold text-darkblue-200">{title}</p>
+          <p className="font-semibold text-darkblue-200 truncate">{title}</p>
           <SaveToReadingListIcon callback={saveToReadingList} />
         </div>
         <div className="flex text-darkblue-500 text-xs">

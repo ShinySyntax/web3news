@@ -15,7 +15,7 @@ const SidebarRight = ({ ...props }) => {
     ],
   };
   return (
-    <div className="flex flex-col my-10 mr-8 p-4 w-full lg:inline-flex overflow-y-hidden rounded-lg bg-darkblue-900 text-darkblue-400">
+    <div className="flex-col my-10 mr-8 p-4 w-full hidden xl:block overflow-y-hidden rounded-lg bg-darkblue-900 text-darkblue-400">
       <div className="px-4">
         <span className="font-bold border-darkblue-400 mb-2">
           Most Upvoted - Last 24hrs
