@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React from "react";
+import { isBrowser } from "react-device-detect";
 // import queryString from 'query-string'
 
 import "./assets/main.css";
@@ -51,8 +52,8 @@ const App = () => {
           </Switch>
         </div>
       </Router>
-      <VideoPlayer />
-      <ChatNotification />
+      {isBrowser ? <VideoPlayer /> : null}
+      {isBrowser ? <ChatNotification /> : null}
     </>
   );
 };
