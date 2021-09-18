@@ -156,7 +156,7 @@ const PostItem = ({ id }) => {
         // data-aos-anchor-placement="top-bottom"
       >
         <div className="flex justify-between h-6">
-          <p className="font-semibold text-darkblue-200 xs:text-xs sm:text-sm md:text-base truncate">
+          <p className="mr-2 text-sm md:text-base truncate font-semibold text-darkblue-200">
             {title}
           </p>
           <SaveToReadingListIcon callback={saveToReadingList} />
@@ -183,7 +183,7 @@ const PostItem = ({ id }) => {
         // data-aos-once="true"
         // data-aos-anchor-placement="top-bottom"
       >
-        <p className="px-4 py-4 text-darkblue-400 xs:text-xs sm:text-sm text-sm">
+        <p className="m-4 text-darkblue-400 text-xs md:text-sm line-clamp-5">
           {description}
         </p>
         <div className="self-center">{getVoteIcons()}</div>
