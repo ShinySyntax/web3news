@@ -34,7 +34,7 @@ const Navbar = () => {
       <div className="">
         <Link className="flex text-darkblue-50 hover-transition" to="/">
           <FontAwesomeIcon icon={faConnectdevelop} size="2x" className="mx-2" />
-          <p className="flex mt-1">Web3News</p>
+          <p className="mt-1 hidden lg:flex">Web3News</p>
         </Link>
       </div>
 
@@ -47,7 +47,7 @@ const Navbar = () => {
           transparent="true"
           show-symbol-logo="true"
         ></div>
-        <div className="">
+        <div className="hidden lg:flex">
           {auth.isLoggedIn ? (
             <>
               <Link
