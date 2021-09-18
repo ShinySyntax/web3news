@@ -4,7 +4,7 @@ import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
 
 const ChatNotification = () => {
   return (
-    <div className="p-4 h-24 max-w-sm fixed bg-darkblue-500 w-64 bottom-4 right-4 rounded-xl shadow-white flex items-center space-x-4">
+    <div className="p-4 h-24 max-w-sm fixed bg-darkblue-500 w-64 bottom-4 right-4 rounded-xl shadow-white flex items-center space-x-4 animate-bounce cursor-pointer hover:opacity-75">
       <div className="">
         <FontAwesomeIcon
           icon={faCommentDots}
