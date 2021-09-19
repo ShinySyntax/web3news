@@ -20,7 +20,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="fixed bg-darkblue-800 bg-opacity-95 shadow-md z-50 w-full px-1 py-1 flex justify-between items-center">
+    <header className="flex fixed w-full px-1 py-1 h-14 bg-darkblue-800 bg-opacity-95 shadow-md z-50 justify-between items-center">
       {showLogin ? (
         <Modal show={showLogin}>
           <Login setShowModal={setShowLogin} />
@@ -41,13 +41,14 @@ const Navbar = () => {
       <div className="flex items-center">
         <div
           id="coinmarketcap-widget-marquee"
+          className="hidden lg:flex"
           coins="1,1027,2010"
           currency="USD"
           theme="dark"
           transparent="true"
           show-symbol-logo="true"
         ></div>
-        <div className="hidden lg:flex">
+        <div className="flex">
           {auth.isLoggedIn ? (
             <>
               <Link
