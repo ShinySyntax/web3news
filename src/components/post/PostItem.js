@@ -183,7 +183,7 @@ const PostItem = ({ id }) => {
         // data-aos-once="true"
         // data-aos-anchor-placement="top-bottom"
       >
-        <p className="m-4 text-darkblue-400 text-xs md:text-sm line-clamp-5">
+        <p className="m-4 ml-0 text-darkblue-400 text-xs md:text-sm line-clamp-5">
           {description}
         </p>
         <div className="self-center">{getVoteIcons()}</div>
