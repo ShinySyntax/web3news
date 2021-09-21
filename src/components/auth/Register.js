@@ -38,7 +38,7 @@ const Register = ({ setShowModal }) => {
 
   return (
     <div className="flex flex-row max-w-2xl bg-darkblue-900 rounded-lg shadow">
-      <div className="w-72 hidden md:flex">
+      <div className="w-80 hidden md:flex">
         <img
           src="https://res.cloudinary.com/daily-now/image/upload/v1594561638/referrals/cover1.jpg"
           alt="Web3News"
@@ -84,7 +84,7 @@ const Register = ({ setShowModal }) => {
               </span>
             </div>
             {userName.length < 5 ? (
-              <p className="text-sm font-light ml-8">
+              <p className="text-sm font-light mx-auto">
                 Please enter your username
               </p>
             ) : null}
@@ -111,7 +111,9 @@ const Register = ({ setShowModal }) => {
               </span>
             </div>
             {!email ? (
-              <p className="text-sm font-light ml-8">Please enter your email</p>
+              <p className="text-sm font-light mx-auto">
+                Please enter your email
+              </p>
             ) : null}
           </div>
 
@@ -140,7 +142,7 @@ const Register = ({ setShowModal }) => {
               </span>
             </div>
             {password.length >= 6 ? null : (
-              <p className="text-sm font-light ml-8">
+              <p className="text-sm font-light mx-auto">
                 Password must be a minimum of 6 characters
               </p>
             )}
