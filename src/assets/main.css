@@ -112,3 +112,7 @@
   border-radius: 10px;
   background: transparent !important;
 }
+
+.text-shadow {
+  text-shadow: rgba(255, 255, 255, 0.5) 0px 0px 0.6rem;
+}

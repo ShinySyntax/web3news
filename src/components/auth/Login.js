@@ -77,7 +77,9 @@ const Login = ({ setShowModal }) => {
               </span>
             </div>
             {!email ? (
-              <p className="text-sm font-light">Please enter your email</p>
+              <p className="text-sm font-light mx-auto">
+                Please enter your email
+              </p>
             ) : null}
           </div>
           <div className="m-2">
@@ -105,7 +107,7 @@ const Login = ({ setShowModal }) => {
               </span>
             </div>
             {password.length >= 6 ? null : (
-              <p className="text-sm font-light">
+              <p className="text-sm font-light mx-auto">
                 Password must be a minimum of 6 characters
               </p>
             )}
@@ -122,7 +124,7 @@ const Login = ({ setShowModal }) => {
           </div>
           <div className="flex justify-end">
             <p className="font-light">
-              Don't have an account?{" "}
+              Don't have an account?
               <Link to="/register" className="font-bold hover:text-darkblue-50">
                 Register
               </Link>

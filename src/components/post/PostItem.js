@@ -104,7 +104,7 @@ const PostItem = ({ id }) => {
         // data-aos-anchor-placement="top-bottom"
       >
         <div className="text-center mr-3 border-r-2 pr-3 text-2xl justify-self-center text-darkblue-500">
-          <p className={`mt-4 ${voteColor}`}>{votes}</p>
+          <p className={`mt-4 text-shadow ${voteColor}`}>{votes}</p>
         </div>
         <div className="">
           <span className="icon post-vote">
@@ -189,7 +189,7 @@ const PostItem = ({ id }) => {
         <div className="self-center">{getVoteIcons()}</div>
       </div>
 
-      <footer className="flex justify-between border-t border-darkblue-700 py-3">
+      <footer className="flex justify-between border-t border-darkblue-700 py-2 md:py-3">
         <div className="relative rounded-full bg-gray-200 top-1">
           <Tag {...tag} />
         </div>
@@ -205,7 +205,7 @@ const PostItem = ({ id }) => {
             </span>
           </div>
           <button
-            className="hover-transition text-darkblue-900 p-2 rounded bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300"
+            className="p-2 text-sm md:text-base hover-transition text-darkblue-900 rounded bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300"
             onClick={() => (window.location = url)}
           >
             READ MORE
