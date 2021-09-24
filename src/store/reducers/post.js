@@ -27,29 +27,45 @@ const postReducer = (state = initalState, action) => {
       };
     case UPVOTE_POST_FAILURE:
       return { ...state };
-    case UPVOTE_POST_SUCCESS:
+    case UPVOTE_POST_SUCCESS: {
+      const { postID, userID, voteTotal } = payload?.interaction;
+
       return {
         ...state,
         posts: state.posts.map((post) => {
-          const { postID, userID } = payload?.interaction;
-          const { interactions } = post;
-          return interactions.map((interaction) => {
-            if (
-              postID === interaction.postID &&
-              userID === interaction.userID
-            ) {
-              return payload.interaction;
-            } else {
-              return { ...interaction };
-            }
-          });
+          if (post.id === postID) {
+            let interactions = post.interactions.map((interaction) => {
+              if (userID === interaction.userID) {
+                return payload.interaction;
+              } else {
+                return { ...interaction };
+              }
+            });
+            return { ...post, interactions, voteTotal };
+          } else return { ...post };
         }),
-        voteTotal: payload.voteTotal,
       };
+    }
     case DOWNVOTE_POST_FAILURE:
       return { ...state };
-    case DOWNVOTE_POST_SUCCESS:
-      return { ...state, voteTotal: payload.voteTotal };
+    case DOWNVOTE_POST_SUCCESS: {
+      const { postID, userID, voteTotal } = payload?.interaction;
+      return {
+        ...state,
+        posts: state.posts.map((post) => {
+          if (post.id === postID) {
+            let interactions = post.interactions.map((interaction) => {
+              if (userID === interaction.userID) {
+                return payload.interaction;
+              } else {
+                return { ...interaction };
+              }
+            });
+            return { ...post, interactions, voteTotal };
+          } else return { ...post };
+        }),
+      };
+    }
     default:
       return state;
   }
