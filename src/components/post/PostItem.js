@@ -201,7 +201,7 @@ const PostItem = ({ id }) => {
               className="text-darkblue-300 cursor-pointer hover:text-darkblue-700 hover-transition"
             />
             <span className="relative bottom-2 right-5 z-10 hover-transition select-none font-semibold">
-              {comments.length}
+              {comments?.length || 0}
             </span>
           </div>
           <button
