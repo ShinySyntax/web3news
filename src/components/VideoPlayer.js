@@ -8,7 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
 const VideoPlayer = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(
+    loadFromLocalStorage() || false
+  );
   const [video, setVideo] = useState(null);
   const handleClick = () => {
     setIsCollapsed(!isCollapsed);
@@ -30,7 +32,7 @@ const VideoPlayer = () => {
       },
       {
         title: "Why web3?",
-        text: "Becuase your entire digital life, personal data and financial information belongs to YOU, not them. Be your own digital custodian in an open source future.",
+        text: "Because your entire digital life, personal data and financial information belongs to YOU, not them. Be your own digital custodian in an open source future.",
         src: DefiWhiteboard,
         provider: "html5",
       },
@@ -46,6 +48,9 @@ const VideoPlayer = () => {
     setVideo(rndItem);
   }, []);
 
+  useEffect(() => {
+    saveToLocalStorage({ isCollapsed: isCollapsed });
+  }, [isCollapsed]);
   const options = {
     clickToPlay: true,
     storage: { enabled: true, key: "plyr" },
@@ -83,6 +88,26 @@ const VideoPlayer = () => {
       ) : null}
     </>
   );
+};
+
+const loadFromLocalStorage = () => {
+  try {
+    const serializedState = localStorage.getItem("web3news-prefs");
+    if (serializedState === null) return null;
+    else return JSON.parse(serializedState)?.isCollapsed || false;
+  } catch (e) {
+    console.warn(e);
+    return null;
+  }
+};
+
+const saveToLocalStorage = (state) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem("web3news-prefs", serializedState);
+  } catch (e) {
+    console.warn(e);
+  }
 };
 
 export default VideoPlayer;
