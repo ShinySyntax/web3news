@@ -34,7 +34,7 @@ const App = () => {
         />
         <Navbar />
         <div
-          className="flex flex-row max-h-screen overflow-y-hidden relative top-12 bg-darkblue-800"
+          className="flex flex-row max-h-screen overflow-y-hidden absolute top-12 bottom-1 bg-darkblue-800"
           // style={{
           //   backgroundImage: `url(${url.default})`,
           //   backgroundSize: "100%",

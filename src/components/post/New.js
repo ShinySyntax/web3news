@@ -52,7 +52,7 @@ const Post = () => {
 
   return (
     <div className="container mt-12 mx-auto xl:w-1/2 2xl:w-1/2 rounded-xl shadow-lg bg-darkblue-900">
-      <div className="p-12 h-1/4">
+      <div className="p-8 md:p-12">
         <div className="mb-2">
           <label htmlFor="post-title" className="text-darkblue-400">
             Post Title
@@ -124,9 +124,7 @@ const Post = () => {
             getOptionLabel={(option) => option.name}
             getOptionValue={(option) => option.value}
             onChange={onChangeHandler}
-            placeholder={
-              loading ? "Loading..." : "Select a tag for your web3 article"
-            }
+            placeholder={loading ? "Loading..." : "Select a tag for your post"}
             components={animatedComponents}
           />
         </div>
