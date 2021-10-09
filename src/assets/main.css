@@ -9,7 +9,6 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #1f293b;
   border-radius: 100vh;
 }
 
@@ -117,6 +116,10 @@
   text-shadow: rgba(255, 255, 255, 0.5) 0px 0px 0.6rem;
 }
 
-.post-animation:hover {
+.w3n-shadow {
+  transition-duration: 500ms;
+}
+
+.w3n-shadow:hover {
   box-shadow: 0px 0px 5px 1px rgb(30, 41, 59), 2px 2px 5px 1px #31b9ff;
 }
