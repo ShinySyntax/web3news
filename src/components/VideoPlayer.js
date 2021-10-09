@@ -62,7 +62,7 @@ const VideoPlayer = () => {
         <div className="flex flex-col max-w-sm fixed bottom-4 left-4 rounded-xl shadow-white items-center bg-darkblue-800">
           <div className="h-70 w-96 px-6 py-4">
             <div className="flex flex-1 pb-2">
-              <div className="flex flex-col pb-2">
+              <div className="flex flex-col">
                 <div className="font-semibold text-sm text-darkblue-100">
                   {video.sources[0].title}
                 </div>

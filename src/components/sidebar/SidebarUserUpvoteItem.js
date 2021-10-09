@@ -9,7 +9,7 @@ const SidebarUserUpvoteItem = ({
   _count,
 }) => {
   return (
-    <div className="flex m-2 py-2 px-4 bg-darkblue-700 rounded-md text-xs cursor-pointer hover:bg-darkblue-200 hover-transition">
+    <div className="flex m-2 py-2 px-4 rounded-md text-xs cursor-pointer border border-darkblue-600 bg-darkblue-700 hover:bg-darkblue-200 hover-transition">
       <div className="flex-col w-48">
         <p className="font-semibold">{userName}</p>
         <p>{email}</p>
