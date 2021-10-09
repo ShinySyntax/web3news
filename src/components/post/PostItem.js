@@ -100,7 +100,7 @@ const PostItem = ({ id }) => {
         // data-aos-once="true"
         // data-aos-anchor-placement="top-bottom"
       >
-        <div className="mr-3 border-r-2 pr-3 text-2xl text-center justify-self-center text-darkblue-500">
+        <div className="mr-3 border-r pr-3 text-2xl text-center justify-self-center text-darkblue-500">
           <p className={`mt-4 text-shadow ${voteColor}`}>{voteTotal}</p>
         </div>
         <div className="">
@@ -131,7 +131,7 @@ const PostItem = ({ id }) => {
 
   return (
     <div
-      className="m-4 px-5 pt-3 rounded-lg border-l-8 border-darkblue-900 hover:shadow-xl hover:border-darkblue-400 bg-darkblue-900"
+      className="m-4 px-5 pt-3 rounded-lg border-l-8 border-darkblue-900 post-animation hover:border-darkblue-400 bg-darkblue-900"
       // data-aos="fade-up"
       // data-aos-offset="200"
       // data-aos-delay="50"
