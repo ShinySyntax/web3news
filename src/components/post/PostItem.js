@@ -31,7 +31,6 @@ const PostItem = ({ id }) => {
   const [upvoted, setUpvoted] = useState(false);
   const [downvoted, setDownvoted] = useState(false);
   const [voteColor, setVoteColor] = useState("");
-  const [votes, setVotes] = useState(voteTotal);
   const date = new Date(createdAt).toLocaleString();
   const dispatch = useDispatch();
 
@@ -50,7 +49,7 @@ const PostItem = ({ id }) => {
     setTimeout(() => {
       setVoteColor("");
     }, 5000);
-  }, [votes, upvoted, downvoted]);
+  }, [upvoted, downvoted]);
 
   const onUpvote = (e) => {
     if (user && isLoggedIn) {
@@ -59,7 +58,6 @@ const PostItem = ({ id }) => {
           .then((res) => {
             setUpvoted(true);
             setDownvoted(false);
-            setVotes(votes + 1);
             toast.success("TO THE MOON! 🚀");
           })
           .catch((err) => {
@@ -78,7 +76,6 @@ const PostItem = ({ id }) => {
           .then((res) => {
             setDownvoted(true);
             setUpvoted(false);
-            setVotes(votes - 1);
             toast.error("DUMP IT! 💩");
           })
           .catch((err) => {
@@ -103,8 +100,8 @@ const PostItem = ({ id }) => {
         // data-aos-once="true"
         // data-aos-anchor-placement="top-bottom"
       >
-        <div className="text-center mr-3 border-r-2 pr-3 text-2xl justify-self-center text-darkblue-500">
-          <p className={`mt-4 text-shadow ${voteColor}`}>{votes}</p>
+        <div className="mr-3 border-r-2 pr-3 text-2xl text-center justify-self-center text-darkblue-500">
+          <p className={`mt-4 text-shadow ${voteColor}`}>{voteTotal}</p>
         </div>
         <div className="">
           <span className="icon post-vote">
@@ -134,7 +131,7 @@ const PostItem = ({ id }) => {
 
   return (
     <div
-      className="m-4 px-5 pt-3 rounded-lg bg-darkblue-900"
+      className="m-4 px-5 pt-3 rounded-lg border-l-8 border-darkblue-900 hover:shadow-xl hover:border-darkblue-400 bg-darkblue-900"
       // data-aos="fade-up"
       // data-aos-offset="200"
       // data-aos-delay="50"
@@ -205,7 +202,7 @@ const PostItem = ({ id }) => {
             </span>
           </div>
           <button
-            className="p-2 text-sm md:text-base hover-transition text-darkblue-900 rounded bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300"
+            className="p-2 text-sm md:text-base hover-transition rounded  text-darkblue-900  bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300"
             onClick={() => (window.location = url)}
           >
             READ MORE

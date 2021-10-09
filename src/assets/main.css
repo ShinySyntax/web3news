@@ -95,7 +95,7 @@
   transition-property: background-color, border-color, color, fill, stroke,
     opacity, box-shadow, transform;
   transition-duration: 0.5s;
-  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.5, 1);
 }
 
 .hover-transition:hover {
