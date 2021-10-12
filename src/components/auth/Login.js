@@ -2,6 +2,8 @@ import { React, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import toast from "react-hot-toast";
+import { isBrowser } from "react-device-detect";
 import {
   faAt,
   faKey,
@@ -11,7 +13,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { login } from "../../store/actions/auth";
-import toast from "react-hot-toast";
+import AtalaPrism from "../../assets/images/atala-prism-logo.svg";
+import w3news from "../../assets/images/w3news-office.jpg";
 
 const Login = ({ setShowModal }) => {
   const [email, setEmail] = useState("");
@@ -35,12 +38,9 @@ const Login = ({ setShowModal }) => {
   };
 
   return (
-    <div className="flex flex-row max-w-2xl bg-darkblue-900 rounded-lg shadow">
+    <div className="flex flex-row max-w-2xl bg-darkblue-900 rounded-lg shadow w3n-hover">
       <div className="w-72 hidden md:flex">
-        <img
-          src="https://res.cloudinary.com/daily-now/image/upload/v1594561638/referrals/cover1.jpg"
-          alt="Web3News"
-        />
+        <img src={w3news} alt="Web3News" />
       </div>
       <div className="w-96 text-center p-5 justify-center text-darkblue-400">
         <div className="flex justify-end relative right-0">
@@ -106,7 +106,7 @@ const Login = ({ setShowModal }) => {
                 />
               </span>
             </div>
-            {password.length >= 6 ? null : (
+            {password?.length >= 6 ? null : (
               <p className="text-sm font-light mx-auto">
                 Password must be a minimum of 6 characters
               </p>
@@ -124,12 +124,26 @@ const Login = ({ setShowModal }) => {
           </div>
           <div className="flex justify-end">
             <p className="font-light">
-              Don't have an account?
+              Don't have an account?{"  "}
               <Link to="/register" className="font-bold hover:text-darkblue-50">
                 Register
               </Link>
             </p>
           </div>
+
+          {isBrowser ? (
+            <div className="flex flex-row justify-evenly mt-4">
+              <div className="place-content-stretch	italic font-medium">
+                Coming soon...
+                <img
+                  src={AtalaPrism}
+                  alt="Atala PRISM"
+                  height="80px"
+                  width="210px"
+                />
+              </div>
+            </div>
+          ) : null}
         </form>
       </div>
     </div>

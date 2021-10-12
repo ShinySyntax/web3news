@@ -131,7 +131,7 @@ const PostItem = ({ id }) => {
 
   return (
     <div
-      className="m-4 px-5 pt-3 rounded-lg border-l-8 border-darkblue-900 w3n-shadow hover:border-darkblue-400 bg-darkblue-900"
+      className="m-4 px-5 pt-3 rounded-lg border-l-8 border-darkblue-900 shadow-lg w3n-hover hover:border-darkblue-400 bg-darkblue-900"
       // data-aos="fade-up"
       // data-aos-offset="200"
       // data-aos-delay="50"

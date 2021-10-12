@@ -59,7 +59,7 @@ const VideoPlayer = () => {
   return (
     <>
       {video ? (
-        <div className="flex flex-col max-w-sm fixed bottom-4 left-4 rounded-xl shadow-white items-center bg-darkblue-800">
+        <div className="flex flex-col max-w-sm fixed bottom-4 left-4 rounded-xl shadow-white w3n-hover items-center bg-darkblue-800">
           <div className="h-70 w-80 px-6 py-4">
             <div className="flex flex-1 pb-2">
               <div className="flex flex-col">

@@ -117,10 +117,14 @@
   text-shadow: rgba(255, 255, 255, 0.5) 0px 0px 0.6rem;
 }
 
-.w3n-shadow {
+.w3n-hover {
   transition-duration: 500ms;
 }
 
-.w3n-shadow:hover {
+.w3n-hover:hover {
+  box-shadow: 0px 0px 5px 1px rgb(30, 41, 59), 2px 2px 5px 1px #31b9ff;
+}
+
+.w3n-shadow {
   box-shadow: 0px 0px 5px 1px rgb(30, 41, 59), 2px 2px 5px 1px #31b9ff;
 }

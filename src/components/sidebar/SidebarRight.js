@@ -1,6 +1,5 @@
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import AtalaPrism from "../../assets/images/atala-prism-logo.svg";
 // import { useSelector } from "react-redux";
 
 const SidebarRight = ({ ...props }) => {
@@ -29,12 +28,6 @@ const SidebarRight = ({ ...props }) => {
           constructorType="chart"
           containerProps="bg-darkblue-300 rounded-lg"
         />
-      </div>
-      <div className="flex h-1/2 px-4">
-        <div className="text-center">
-          Coming soon...
-          <img src={AtalaPrism} alt="Atala PRISM" />
-        </div>
       </div>
     </div>
   );

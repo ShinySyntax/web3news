@@ -2,6 +2,8 @@ import { React, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import toast from "react-hot-toast";
+import { isBrowser } from "react-device-detect";
 import {
   faIdBadge,
   faAt,
@@ -12,7 +14,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { register } from "../../store/actions/auth";
-import toast from "react-hot-toast";
+import AtalaPrism from "../../assets/images/atala-prism-logo.svg";
+import w3news from "../../assets/images/w3news-office.jpg";
 
 const Register = ({ setShowModal }) => {
   const [userName, setUserName] = useState("");
@@ -37,14 +40,11 @@ const Register = ({ setShowModal }) => {
   };
 
   return (
-    <div className="flex flex-row max-w-2xl bg-darkblue-900 rounded-lg shadow">
+    <div className="flex flex-row bg-darkblue-900 rounded-lg shadow w3n-hover">
       <div className="w-96 hidden md:flex">
-        <img
-          src="https://res.cloudinary.com/daily-now/image/upload/v1594561638/referrals/cover1.jpg"
-          alt="Web3News"
-        />
+        <img src={w3news} alt="Web3News" />
       </div>
-      <div className="w-full text-center p-5 justify-center text-darkblue-400">
+      <div className="w-112 text-center p-5 justify-center text-darkblue-400">
         <div className="flex justify-end relative right-0">
           <FontAwesomeIcon
             icon={faTimesCircle}
@@ -59,7 +59,7 @@ const Register = ({ setShowModal }) => {
           <strong>straight to your homepage</strong>
         </h2>
         <form onSubmit={submitForm}>
-          <div className="m-4">
+          <div className="m-2">
             <div className="flex">
               <span className="m-2">
                 <FontAwesomeIcon icon={faIdBadge} size="1x" />
@@ -89,8 +89,7 @@ const Register = ({ setShowModal }) => {
               </p>
             ) : null}
           </div>
-
-          <div className="m-4">
+          <div className="m-2">
             <div className="flex">
               <span className="m-2">
                 <FontAwesomeIcon icon={faAt} size="1x" />
@@ -116,8 +115,7 @@ const Register = ({ setShowModal }) => {
               </p>
             ) : null}
           </div>
-
-          <div className="m-4">
+          <div className="m-2">
             <div className="flex">
               <span className="m-2">
                 <FontAwesomeIcon icon={faKey} size="1x" />
@@ -141,13 +139,12 @@ const Register = ({ setShowModal }) => {
                 />
               </span>
             </div>
-            {password.length >= 6 ? null : (
+            {password?.length >= 6 ? null : (
               <p className="text-sm font-light mx-auto">
                 Password must be a minimum of 6 characters
               </p>
             )}
           </div>
-
           <div className="flex justify-end">
             <button className="font-bold" type="submit" name="action">
               Submit
@@ -156,12 +153,25 @@ const Register = ({ setShowModal }) => {
           </div>
           <div className="flex justify-end">
             <p className="font-light">
-              Have an account?{" "}
+              Have an account?{"  "}
               <Link to="/login" className="font-bold">
                 Login
               </Link>
             </p>
           </div>
+          {isBrowser ? (
+            <div className="flex flex-row justify-evenly mt-4">
+              <div className="place-content-stretch	italic font-medium">
+                Coming soon...
+                <img
+                  src={AtalaPrism}
+                  alt="Atala PRISM"
+                  height="80px"
+                  width="220px"
+                />
+              </div>
+            </div>
+          ) : null}
         </form>
       </div>
     </div>
