@@ -19,7 +19,7 @@ const SidebarRight = ({ ...props }) => {
     <div className="flex-col my-10 mx-4 p-4 w-full hidden xl:block overflow-y-hidden rounded-lg bg-darkblue-900 text-darkblue-400">
       <div className="h-1/2 px-4">
         <span className="font-bold border-darkblue-400 mb-2">
-          Most Upvoted - Last 24hrs
+          Cardano Price Action
         </span>
         <HighchartsReact
           highcharts={Highcharts}
