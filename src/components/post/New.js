@@ -51,7 +51,7 @@ const Post = () => {
   };
 
   return (
-    <div className="container mt-12 mx-auto xl:w-1/2 2xl:w-1/2 rounded-xl shadow-lg bg-darkblue-900">
+    <div className="container relative mt-12 mx-auto rounded-xl shadow-lg bg-darkblue-900 w3n-hover">
       <div className="p-8 md:p-12">
         <div className="mb-2">
           <label htmlFor="post-title" className="text-darkblue-400">

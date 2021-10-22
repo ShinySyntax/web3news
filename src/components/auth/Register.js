@@ -14,6 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { register } from "../../store/actions/auth";
+import CardanoLogo from "../../assets/images/cardano.svg";
 import AtalaPrism from "../../assets/images/atala-prism-logo.svg";
 import w3news from "../../assets/images/w3news-office.jpg";
 
@@ -44,8 +45,11 @@ const Register = ({ setShowModal }) => {
       <div className="w-96 hidden md:flex">
         <img src={w3news} alt="Web3News" />
       </div>
-      <div className="w-112 text-center p-5 justify-center text-darkblue-400">
-        <div className="flex justify-end relative right-0">
+      <div className="w-96 text-center p-5 justify-center text-darkblue-400">
+        <div className="flex justify-between">
+          <div className="self-center items-center">
+            <img src={CardanoLogo} alt="Cardano" height="80px" width="140px" />
+          </div>
           <FontAwesomeIcon
             icon={faTimesCircle}
             size="2x"
@@ -55,9 +59,12 @@ const Register = ({ setShowModal }) => {
         </div>
         <h1 className="font-semibold text-xl text-center">Register</h1>
         <h2 className="mx-4 text-sm">
-          and get the latest cutting edge web3 news...
-          <strong>straight to your homepage</strong>
+          and get the latest cutting edge web3 experience...
+          <strong> straight to your homepage.</strong>
         </h2>
+        <h3 className="m-4 font-semibold text-xs">
+          The web was made for you, it's time to take it back.
+        </h3>
         <form onSubmit={submitForm}>
           <div className="m-2">
             <div className="flex">
@@ -75,18 +82,12 @@ const Register = ({ setShowModal }) => {
                 <FontAwesomeIcon
                   icon={faCheck}
                   size="1x"
-                  className={
-                    userName.length >= 5
-                      ? "text-darkblue-400"
-                      : "text-darkblue-700"
-                  }
+                  className={userName.length >= 5 ? "text-darkblue-400" : "text-darkblue-700"}
                 />
               </span>
             </div>
             {userName.length < 5 ? (
-              <p className="text-sm font-light mx-auto">
-                Please enter your username
-              </p>
+              <p className="text-sm font-light mx-auto">Please enter your username</p>
             ) : null}
           </div>
           <div className="m-2">
@@ -109,11 +110,7 @@ const Register = ({ setShowModal }) => {
                 />
               </span>
             </div>
-            {!email ? (
-              <p className="text-sm font-light mx-auto">
-                Please enter your email
-              </p>
-            ) : null}
+            {!email ? <p className="text-sm font-light mx-auto">Please enter your email</p> : null}
           </div>
           <div className="m-2">
             <div className="flex">
@@ -131,11 +128,7 @@ const Register = ({ setShowModal }) => {
                 <FontAwesomeIcon
                   icon={faCheck}
                   size="1x"
-                  className={
-                    password.length >= 6
-                      ? "text-darkblue-400"
-                      : "text-darkblue-700"
-                  }
+                  className={password.length >= 6 ? "text-darkblue-400" : "text-darkblue-700"}
                 />
               </span>
             </div>
@@ -161,14 +154,9 @@ const Register = ({ setShowModal }) => {
           </div>
           {isBrowser ? (
             <div className="flex flex-row justify-evenly mt-4">
-              <div className="place-content-stretch	italic font-medium">
+              <div className="place-content-stretch	italic font-medium text-sm">
                 Coming soon...
-                <img
-                  src={AtalaPrism}
-                  alt="Atala PRISM"
-                  height="80px"
-                  width="220px"
-                />
+                <img src={AtalaPrism} alt="Atala PRISM" height="80px" width="220px" />
               </div>
             </div>
           ) : null}

@@ -26,10 +26,12 @@ const PostList = () => {
       return <PostItem key={item.id} id={item.id} />;
     });
 
-    return <div className="my-6 overflow-y-auto">{renderedResults}</div>;
+    return (
+      <div className="relative my-6 overflow-y-auto">{renderedResults}</div>
+    );
   } else {
     return (
-      <div className="my-6">
+      <div className="relative my-6">
         <h1 className="flex justify-center">
           Welcome, {auth.isLoggedIn ? `${auth.user.userName}` : "Guest"}. Here
           is what is currently trending around the web3 world.

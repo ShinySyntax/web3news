@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { login } from "../../store/actions/auth";
+import CardanoLogo from "../../assets/images/cardano.svg";
 import AtalaPrism from "../../assets/images/atala-prism-logo.svg";
 import w3news from "../../assets/images/w3news-office.jpg";
 
@@ -43,7 +44,10 @@ const Login = ({ setShowModal }) => {
         <img src={w3news} alt="Web3News" />
       </div>
       <div className="w-96 text-center p-5 justify-center text-darkblue-400">
-        <div className="flex justify-end relative right-0">
+        <div className="flex justify-between">
+          <div className="self-center items-center">
+            <img src={CardanoLogo} alt="Cardano" height="80px" width="140px" />
+          </div>
           <FontAwesomeIcon
             icon={faTimesCircle}
             size="2x"
@@ -53,6 +57,9 @@ const Login = ({ setShowModal }) => {
         </div>
         <h1 className="font-semibold text-xl text-center">Login</h1>
         <h2 className="mx-4 text-sm">Welcome back!</h2>
+        <h3 className="m-4 font-semibold text-xs">
+          The web was made for you, it's time to take it back.
+        </h3>
         <form onSubmit={submitForm}>
           <div className="m-2">
             <div className="flex">
@@ -70,17 +77,11 @@ const Login = ({ setShowModal }) => {
                 <FontAwesomeIcon
                   icon={faCheck}
                   size="1x"
-                  className={
-                    email.length > 6 ? "text-darkblue-400" : "text-darkblue-700"
-                  }
+                  className={email.length > 6 ? "text-darkblue-400" : "text-darkblue-700"}
                 />
               </span>
             </div>
-            {!email ? (
-              <p className="text-sm font-light mx-auto">
-                Please enter your email
-              </p>
-            ) : null}
+            {!email ? <p className="text-sm font-light mx-auto">Please enter your email</p> : null}
           </div>
           <div className="m-2">
             <div className="flex">
@@ -98,11 +99,7 @@ const Login = ({ setShowModal }) => {
                 <FontAwesomeIcon
                   icon={faCheck}
                   size="1x"
-                  className={
-                    password.length >= 6
-                      ? "text-darkblue-400"
-                      : "text-darkblue-700"
-                  }
+                  className={password.length >= 6 ? "text-darkblue-400" : "text-darkblue-700"}
                 />
               </span>
             </div>
@@ -113,11 +110,7 @@ const Login = ({ setShowModal }) => {
             )}
           </div>
           <div className="flex justify-end">
-            <button
-              className="font-bold hover:text-darkblue-50"
-              type="submit"
-              name="action"
-            >
+            <button className="font-bold hover:text-darkblue-50" type="submit" name="action">
               Submit
               <FontAwesomeIcon icon={faPaperPlane} size="1x" className="ml-2" />
             </button>
@@ -133,14 +126,9 @@ const Login = ({ setShowModal }) => {
 
           {isBrowser ? (
             <div className="flex flex-row justify-evenly mt-4">
-              <div className="place-content-stretch	italic font-medium">
+              <div className="place-content-stretch	italic font-medium text-sm">
                 Coming soon...
-                <img
-                  src={AtalaPrism}
-                  alt="Atala PRISM"
-                  height="80px"
-                  width="210px"
-                />
+                <img src={AtalaPrism} alt="Atala PRISM" height="80px" width="210px" />
               </div>
             </div>
           ) : null}
