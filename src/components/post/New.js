@@ -11,7 +11,7 @@ import { getAllTags } from "../../store/actions/tag";
 
 const Post = () => {
   const auth = useSelector((state) => state.authReducer);
-  const [type, setType] = useState("TEXT");
+  // const [type, setType] = useState("TEXT");
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
   const [description, setDescription] = useState("");
@@ -46,7 +46,7 @@ const Post = () => {
       .catch((err) => console.error(err.message));
   };
 
-  const activeClasses = "bg-dark";
+  // const activeClasses = "bg-dark";
 
   return (
     <div className="container relative mt-12 rounded-xl shadow-lg bg-darkblue-900 w3n-hover">
