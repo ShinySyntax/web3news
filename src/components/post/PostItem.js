@@ -15,19 +15,8 @@ import SaveToReadingListIcon from "./SaveIcon";
 
 const PostItem = ({ id }) => {
   const { user, isLoggedIn } = useSelector((state) => state.authReducer);
-  const {
-    title,
-    url,
-    description,
-    createdAt,
-    interactions,
-    voteTotal,
-    views,
-    tag,
-    comments,
-  } = useSelector((state) =>
-    state.postReducer.posts.find((post) => post.id === id)
-  );
+  const { title, url, description, createdAt, interactions, voteTotal, views, tag, comments } =
+    useSelector((state) => state.postReducer.posts.find((post) => post.id === id));
   const [upvoted, setUpvoted] = useState(false);
   const [downvoted, setDownvoted] = useState(false);
   const [voteColor, setVoteColor] = useState("");
@@ -35,9 +24,7 @@ const PostItem = ({ id }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const userInteractions = interactions.find(
-      (item) => item.userID === user.id
-    );
+    const userInteractions = interactions.find((item) => item.userID === user.id);
     if (userInteractions)
       if (userInteractions.upvote) setUpvoted(userInteractions.upvote);
       else if (!userInteractions.upvote) setDownvoted(!userInteractions.upvote);
@@ -61,9 +48,7 @@ const PostItem = ({ id }) => {
             toast.success("TO THE MOON! 🚀");
           })
           .catch((err) => {
-            toast.error(
-              "Upvoted failed. Please ensure that you are logged in!"
-            );
+            toast.error("Upvoted failed. Please ensure that you are logged in!");
           });
       }
     } else toast.error("Not logged in. Please login to vote on posts.");
@@ -79,9 +64,7 @@ const PostItem = ({ id }) => {
             toast.error("DUMP IT! 💩");
           })
           .catch((err) => {
-            toast.error(
-              "Downvoted failed. Please ensure that you are logged in!"
-            );
+            toast.error("Downvoted failed. Please ensure that you are logged in!");
           });
       }
     } else toast.error("Not logged in. Please login to vote on posts.");
@@ -152,8 +135,8 @@ const PostItem = ({ id }) => {
         // data-aos-once="true"
         // data-aos-anchor-placement="top-bottom"
       >
-        <div className="flex justify-between h-6">
-          <p className="mr-2 text-sm md:text-base truncate font-semibold text-darkblue-200">
+        <div className="flex justify-between h-4">
+          <p className="mr-2 text-sm md:text-normal truncate font-semibold text-darkblue-200">
             {title}
           </p>
           <SaveToReadingListIcon callback={saveToReadingList} />
@@ -180,14 +163,12 @@ const PostItem = ({ id }) => {
         // data-aos-once="true"
         // data-aos-anchor-placement="top-bottom"
       >
-        <p className="m-4 ml-0 text-darkblue-400 text-xs md:text-sm line-clamp-5">
-          {description}
-        </p>
+        <p className="m-3 ml-0 text-darkblue-400 text-xs line-clamp-7">{description}</p>
         <div className="self-center">{getVoteIcons()}</div>
       </div>
 
-      <footer className="flex justify-between border-t border-darkblue-700 py-2 md:py-3">
-        <div className="relative rounded-full bg-gray-200 top-1">
+      <footer className="flex justify-between border-t border-darkblue-700 py-2">
+        <div className="relative rounded-full bg-gray-200">
           <Tag {...tag} />
         </div>
         <div className="">
@@ -202,7 +183,7 @@ const PostItem = ({ id }) => {
             </span>
           </div>
           <button
-            className="p-2 text-sm md:text-base hover-transition rounded  text-darkblue-900  bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300"
+            className="p-2 text-sm md:text-normal hover-transition rounded  text-darkblue-900  bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300"
             onClick={() => (window.location = url)}
           >
             READ MORE
