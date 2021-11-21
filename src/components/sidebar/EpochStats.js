@@ -64,7 +64,7 @@ const EpochStats = () => {
       >
         <div className="flex flex-col absolute top-8 left-16 mx-1 text-darkblue-400 animated fade-in">
           <img src={ada} alt="Cardano" height={32} width={32} className="flex self-center"></img>
-          <div className="font-semibold">Epoch {epochData?.epoch}</div>
+          <div className="font-bold">{epochData?.epoch}</div>
           <div className="font-bold text-lg text-darkblue-50">{epochRemaining} %</div>
           <div>{epochOutput} ₳ </div>
           <div>
