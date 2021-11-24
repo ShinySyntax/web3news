@@ -28,9 +28,6 @@ const EpochStats = () => {
       const tps = latest?.tx_count
         ? Number(Number(latest?.tx_count) / block?.epoch_slot).toPrecision(2)
         : 0;
-      console.log(latest?.tx_count);
-      console.log(block?.epoch_slot);
-      console.log(tps);
       const tpsStr = ` - ${tps}/s`;
       setEpochRemaining(epochStr);
       setEpochTPS(tpsStr);
@@ -62,7 +59,7 @@ const EpochStats = () => {
         rotate={-210}
         className="flex mx-auto px-2 text-center relative h-48 text-xs"
       >
-        <div className="flex flex-col absolute top-8 left-16 mx-1 text-darkblue-400 animated fade-in">
+        <div className="flex flex-col absolute top-8 left-14 mx-1 text-darkblue-400 animated fade-in">
           <img src={ada} alt="Cardano" height={32} width={32} className="flex self-center"></img>
           <div className="font-bold">{epochData?.epoch}</div>
           <div className="font-bold text-lg text-darkblue-50">{epochRemaining} %</div>
