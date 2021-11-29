@@ -11,6 +11,7 @@ import { getAllTags } from "../../store/actions/tag";
 
 const Post = () => {
   const auth = useSelector((state) => state.authReducer);
+  // const [type, setType] = useState("TEXT");
   const [title, setTitle] = useState("");
   const [url, setUrl] = useState("");
   const [description, setDescription] = useState("");
@@ -38,20 +39,25 @@ const Post = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      post(
-        { userID: auth.user.id, title, url, description, tagID: selectedTag },
-        history
-      )
-    )
+    dispatch(post({ userID: auth.user.id, title, url, description, tagID: selectedTag }, history))
       .then((data) => {
         console.log(data);
       })
       .catch((err) => console.error(err.message));
   };
 
+  // const activeClasses = "bg-dark";
+
   return (
-    <div className="container mt-12 mx-auto xl:w-1/2 2xl:w-1/2 rounded-xl shadow-lg bg-darkblue-900">
+    <div className="container relative mt-12 rounded-xl shadow-lg bg-darkblue-900 w3n-hover">
+      <div className="flex flex-row text-darkblue-400">
+        <div className="w-1/2 p-2 text-lg text-center rounded-tl-lg cursor-pointer bg-darkblue-200 hover:bg-darkblue-400 text-darkblue-800 hover:text-darkblue-200">
+          <div>Text</div>
+        </div>
+        <div className="w-1/2 p-2 text-lg text-center rounded-tr-lg cursor-pointer bg-darkblue-900 hover:bg-darkblue-400 text-darkblue-200 hover:text-darkblue-800">
+          <div>Link</div>
+        </div>
+      </div>
       <div className="p-8 md:p-12">
         <div className="mb-2">
           <label htmlFor="post-title" className="text-darkblue-400">
@@ -95,11 +101,7 @@ const Post = () => {
                 // You can store the "editor" and use when it is needed.
                 console.log("Editor is ready to use!", editor);
                 editor.editing.view.change((writer) => {
-                  writer.setStyle(
-                    "height",
-                    "200px",
-                    editor.editing.view.document.getRoot()
-                  );
+                  writer.setStyle("height", "200px", editor.editing.view.document.getRoot());
                 });
               }}
               onChange={(event, editor) => {

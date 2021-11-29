@@ -92,8 +92,8 @@
 }
 
 .hover-transition {
-  transition-property: background-color, border-color, color, fill, stroke,
-    opacity, box-shadow, transform;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow,
+    transform;
   transition-duration: 0.5s;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.5, 1);
 }
@@ -104,8 +104,7 @@
 }
 
 .shadow-white {
-  box-shadow: rgb(128 138 157 / 50%) 0px 1px 2px,
-    rgb(128 138 157 / 40%) 0px 8px 32px;
+  box-shadow: rgb(128 138 157 / 50%) 0px 1px 2px, rgb(128 138 157 / 40%) 0px 8px 24px;
 }
 
 .plyr--video {
@@ -117,10 +116,35 @@
   text-shadow: rgba(255, 255, 255, 0.5) 0px 0px 0.6rem;
 }
 
-.w3n-shadow {
+.w3n-hover {
   transition-duration: 500ms;
 }
 
-.w3n-shadow:hover {
+.w3n-hover:hover {
   box-shadow: 0px 0px 5px 1px rgb(30, 41, 59), 2px 2px 5px 1px #31b9ff;
+}
+
+.w3n-shadow {
+  box-shadow: 0px 0px 5px 1px rgb(30, 41, 59), 2px 2px 5px 1px #31b9ff;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+.animated {
+  -webkit-animation-duration: 7s;
+  animation-duration: 7s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }

@@ -23,6 +23,7 @@ const App = () => {
   // console.log(path, url)
   // const { search } = useLocation()
   // const { tag } = queryString.parse(search)
+  const position = isBrowser ? "absolute" : "relative";
 
   return (
     <>
@@ -34,7 +35,7 @@ const App = () => {
         />
         <Navbar />
         <div
-          className="flex flex-row max-h-screen overflow-y-hidden absolute top-12 bottom-1 bg-darkblue-800"
+          className={`flex flex-row max-h-screen overflow-y-hidden ${position} top-10 bottom-0 bg-darkblue-800`}
           // style={{
           //   backgroundImage: `url(${url.default})`,
           //   backgroundSize: "100%",

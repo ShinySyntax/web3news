@@ -20,7 +20,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="flex fixed w-full px-1 py-1 h-14 bg-darkblue-800 bg-opacity-95 shadow-md z-50 justify-between items-center">
+    <header className="flex fixed w-full px-1 py-1 h-14 z-50 justify-between items-center  bg-darkblue-800 bg-opacity-95 shadow-md w3n-shadow">
       {showLogin ? (
         <Modal show={showLogin}>
           <Login setShowModal={setShowLogin} />

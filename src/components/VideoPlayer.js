@@ -8,9 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
 const VideoPlayer = () => {
-  const [isCollapsed, setIsCollapsed] = useState(
-    loadFromLocalStorage() || false
-  );
+  const [isCollapsed, setIsCollapsed] = useState(loadFromLocalStorage() || false);
   const [video, setVideo] = useState(null);
   const handleClick = () => {
     setIsCollapsed(!isCollapsed);
@@ -26,7 +24,7 @@ const VideoPlayer = () => {
       },
       {
         title: "What is Cardano?",
-        text: "The operating system of the internet. Secure, scalable and interoperable proof-of-stake blockchain, with digital identity built in.",
+        text: "The financial operating system of the internet. Secure, scalable and interoperable proof-of-stake blockchain, with digital identity built in.",
         src: CardanoWhiteboard,
         provider: "html5",
       },
@@ -40,9 +38,7 @@ const VideoPlayer = () => {
 
     const rndItem = {
       type: "video",
-      sources: [
-        playerRotation[Math.floor(Math.random() * playerRotation.length)],
-      ],
+      sources: [playerRotation[Math.floor(Math.random() * playerRotation.length)]],
     };
 
     setVideo(rndItem);
@@ -59,23 +55,19 @@ const VideoPlayer = () => {
   return (
     <>
       {video ? (
-        <div className="flex flex-col max-w-sm fixed bottom-4 left-4 rounded-xl shadow-white items-center bg-darkblue-800">
+        <div className="flex flex-col max-w-sm fixed bottom-4 left-4 rounded-xl shadow-white w3n-hover items-center bg-darkblue-800">
           <div className="h-70 w-80 px-6 py-4">
             <div className="flex flex-1 pb-2">
               <div className="flex flex-col">
                 <div className="font-semibold text-sm text-darkblue-100">
                   {video.sources[0].title}
                 </div>
-                <div className="font-normal text-xs text-darkblue-300">
-                  {video.sources[0].text}
-                </div>
+                <div className="font-normal text-xs text-darkblue-300">{video.sources[0].text}</div>
               </div>
               <div className="top-0 cursor-pointer text-darkblue-300 hover:text-darkblue-600">
                 <FontAwesomeIcon
                   icon={isCollapsed ? faPlus : faMinus}
-                  title={
-                    isCollapsed ? "Expand News Player" : "Minimize News Player"
-                  }
+                  title={isCollapsed ? "Expand News Player" : "Minimize News Player"}
                   onClick={handleClick}
                 />
               </div>
