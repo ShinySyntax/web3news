@@ -167,7 +167,7 @@ const PostItem = ({ id }) => {
         <div className="self-center">{getVoteIcons()}</div>
       </div>
 
-      <footer className="flex justify-between border-t border-darkblue-700 py-2">
+      <footer className="flex justify-between border-t border-darkblue-700 py-3">
         <div className="relative rounded-full bg-gray-200">
           <Tag {...tag} />
         </div>
@@ -183,7 +183,7 @@ const PostItem = ({ id }) => {
             </span>
           </div>
           <button
-            className="p-2 text-sm md:text-normal hover-transition rounded  text-darkblue-900  bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300"
+            className="p-2 text-sm md:text-normal hover-transition rounded  text-darkblue-900  bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300 button-shadow"
             onClick={() => (window.location = url)}
           >
             READ MORE

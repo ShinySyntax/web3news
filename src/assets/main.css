@@ -103,6 +103,10 @@
   opacity: 0.95;
 }
 
+.button-shadow {
+  box-shadow: rgb(129 140 167) 0px 0px 8px 2px;
+}
+
 .shadow-white {
   box-shadow: rgb(128 138 157 / 50%) 0px 1px 2px, rgb(128 138 157 / 40%) 0px 8px 24px;
 }

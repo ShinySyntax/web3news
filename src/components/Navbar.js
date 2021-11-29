@@ -94,9 +94,7 @@ const Navbar = () => {
                 }}
                 className="m-2 text-darkblue-400 hover:text-darkblue-100"
               >
-                <i className="material-icons hover-transition">
-                  account_circle
-                </i>
+                <i className="material-icons hover-transition">account_circle</i>
               </Link>
               <Link
                 className="m-2 text-darkblue-400 hover:text-darkblue-100"
@@ -113,13 +111,13 @@ const Navbar = () => {
           <div className="flex items-center mr-2">
             <div
               onClick={onShowLogin}
-              className="text-darkblue-800 p-2 m-1 rounded bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300 cursor-pointer"
+              className="text-darkblue-800 p-2 m-2 rounded bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300 cursor-pointer hover-transition button-shadow"
             >
               Login
             </div>
             <div
               onClick={onShowRegister}
-              className="text-darkblue-800 p-2 m-1 rounded bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300 cursor-pointer"
+              className="text-darkblue-800 p-2 m-2 rounded bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300 cursor-pointer hover-transition button-shadow"
             >
               Register
             </div>
