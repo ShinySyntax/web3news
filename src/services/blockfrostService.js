@@ -38,7 +38,7 @@ const blockfrostService = {
       });
   },
   accountsAddressesAssets: (data) => {
-    return API.get("/blockfrost/accountsAddressesAssets")
+    return API.get(`/blockfrost/accountsAddressesAssets?address=${data}`)
       .then((res) => {
         return res.data;
       })

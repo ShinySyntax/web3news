@@ -4,7 +4,7 @@ const ProjectCatalyst = () => {
   const url = "https://drive.google.com/file/d/1E47HUA9Xikla1v9bvgxw-pR3_4kSnTye/view";
 
   return (
-    <div className="flex h-full my-4 overflow-y-scroll rounded-lg bg-darkblue-900 w3n-hover">
+    <div className="flex h-96 my-4 overflow-y-scroll rounded-lg bg-darkblue-900 w3n-hover">
       <div className="flex flex-col p-4 text-xs text-darkblue-400 font-extralight">
         <a className="text-normal font-semibold hover:text-darkblue-600" href={url}>
           Upcoming Project Catalyst - Fund7
