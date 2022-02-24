@@ -1,52 +1,47 @@
-import { React, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { React } from "react";
+// import { useHistory } from "react-router-dom";
+// import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import toast from "react-hot-toast";
-import { isBrowser } from "react-device-detect";
-import {
-  faAt,
-  faKey,
-  faPaperPlane,
-  faCheck,
-  faTimesCircle,
-} from "@fortawesome/free-solid-svg-icons";
+// import toast from "react-hot-toast";
+import { faTimesCircle, faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
-import { login } from "../../store/actions/auth";
+// import { login } from "../../store/actions/auth";
 import CardanoLogo from "../../assets/images/cardano.svg";
-import AtalaPrism from "../../assets/images/atala-prism-logo.svg";
 import w3news from "../../assets/images/w3news-office.jpg";
+import NamiLogo from "../../assets/images/nami.svg";
+import CCVaultLogo from "../../assets/images/ccvault.png";
+import GeroWalletLogo from "../../assets/images/gero.ico";
+import FlintLogo from "../../assets/images/flint.svg";
 
 const Login = ({ setShowModal }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
-  const history = useHistory();
+  // const dispatch = useDispatch();
+  // const history = useHistory();
   const closeLogin = () => {
     setShowModal(false);
   };
 
-  const submitForm = (e) => {
-    e.preventDefault();
-    dispatch(login({ email, password }, history))
-      .then(() => {
-        toast.success("Welcome back to web3 🚀🚀🚀");
-        closeLogin();
-      })
-      .catch((message) => {
-        toast.error(`${message} 💩`);
-      });
-  };
+  // const connectWallet = (e) => {
+  //    e.preventDefault();
+  //   // dispatch(
+  //     login({ email, password }, history))
+  //     .then(() => {
+  //       toast.success("Welcome back to web3 🚀🚀🚀");
+  //       closeLogin();
+  //     })
+  //     .catch((message) => {
+  //       toast.error(`${message} 💩`);
+  //     });
+  // };
 
   return (
-    <div className="flex flex-row max-w-2xl bg-darkblue-900 rounded-lg shadow w3n-hover">
+    <div className="flex flex-row max-w-2xl bg-darkblue-900 rounded-xl shadow w3n-hover">
       <div className="w-72 hidden md:flex">
-        <img src={w3news} alt="Web3News" />
+        <img src={w3news} alt="Web3News" className="rounded-tl-lg rounded-bl-lg" />
       </div>
       <div className="w-96 text-center p-5 justify-center text-darkblue-400">
-        <div className="flex justify-between">
-          <div className="self-center items-center">
-            <img src={CardanoLogo} alt="Cardano" height="80px" width="140px" />
+        <div className="flex justify-between ml-40 mb-2">
+          <div className="self-center items-center animate-spin-slow">
+            <img src={CardanoLogo} alt="Cardano" height="36px" width="36px" />
           </div>
           <FontAwesomeIcon
             icon={faTimesCircle}
@@ -55,84 +50,75 @@ const Login = ({ setShowModal }) => {
             className="cursor-pointer text-darkblue-700 hover:text-darkblue-50"
           />
         </div>
-        <h1 className="font-semibold text-xl text-center">Login</h1>
-        <h2 className="mx-4 text-sm">Welcome back!</h2>
-        <h3 className="m-4 font-semibold text-xs">
+        <h1 className="font-semibold text-xl text-center text-darkblue-100">Connect Your Wallet</h1>
+        <h3 className="m-2 font-semibold text-xs">
           The web was made for you, it's time to take it back.
         </h3>
-        <form onSubmit={submitForm}>
-          <div className="m-2">
-            <div className="flex">
-              <span className="m-2">
-                <FontAwesomeIcon icon={faAt} size="1x" />
-              </span>
-              <input
-                type="email"
-                className="border-2 rounded px-3 py-2 w-full text-darkblue-900 focus:outline-none focus:border-blue-100 focus:shadow"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <span className="m-2">
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  size="1x"
-                  className={email.length > 6 ? "text-darkblue-400" : "text-darkblue-700"}
-                />
-              </span>
-            </div>
-            {!email ? <p className="text-sm font-light mx-auto">Please enter your email</p> : null}
-          </div>
-          <div className="m-2">
-            <div className="flex">
-              <span className="m-2">
-                <FontAwesomeIcon icon={faKey} size="1x" />
-              </span>
-              <input
-                type="password"
-                className="border-2 rounded px-3 py-2 w-full text-darkblue-900 focus:outline-none focus:border-blue-100 focus:shadow"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <span className="m-2">
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  size="1x"
-                  className={password.length >= 6 ? "text-darkblue-400" : "text-darkblue-700"}
-                />
-              </span>
-            </div>
-            {password?.length >= 6 ? null : (
-              <p className="text-sm font-light mx-auto">
-                Password must be a minimum of 6 characters
-              </p>
-            )}
-          </div>
-          <div className="flex justify-end">
-            <button className="font-bold hover:text-darkblue-50" type="submit" name="action">
-              Submit
-              <FontAwesomeIcon icon={faPaperPlane} size="1x" className="ml-2" />
+        <div className="flex flex-col mb-8 px-4">
+          <div className="relative">
+            <button class="p-5 my-2 min-w-full text-left text-sm md:text-normal hover-transition rounded-xl  text-darkblue-900  bg-darkblue-300 hover:bg-darkblue-900 hover:text-darkblue-300 focus:outline-none button-shadow">
+              CCVault
             </button>
+            <img
+              src={CCVaultLogo}
+              alt="CCvault.io Wallet"
+              height="30px"
+              width="30px"
+              className="absolute inset-y-6 right-6"
+            />
           </div>
-          <div className="flex justify-end">
-            <p className="font-light">
-              Don't have an account?{"  "}
-              <Link to="/register" className="font-bold hover:text-darkblue-50">
-                Register
-              </Link>
-            </p>
+          <div className="relative">
+            <button class="p-5 my-2 min-w-full text-left text-sm md:text-normal cursor-not-allowed hover-transition rounded-xl  text-darkblue-900  bg-darkblue-300 hover:bg-darkblue-900 hover:text-darkblue-300 focus:outline-none button-shadow">
+              Gero Wallet
+            </button>
+            <img
+              src={GeroWalletLogo}
+              alt="Gero Wallet Logo"
+              height="30px"
+              width="30px"
+              className="absolute inset-y-6 right-6"
+            />
           </div>
-
-          {isBrowser ? (
-            <div className="flex flex-row justify-evenly mt-4">
-              <div className="place-content-stretch	italic font-medium text-sm">
-                Coming soon...
-                <img src={AtalaPrism} alt="Atala PRISM" height="80px" width="210px" />
-              </div>
-            </div>
-          ) : null}
-        </form>
+          <div className="relative">
+            <button class="p-5 my-2 min-w-full text-left text-sm md:text-normal hover-transition rounded-xl  text-darkblue-900  bg-darkblue-300 hover:bg-darkblue-900 hover:text-darkblue-300 focus:outline-none button-shadow">
+              Nami
+            </button>
+            <img
+              src={NamiLogo}
+              alt="Nami Wallet"
+              height="30px"
+              width="30px"
+              className="absolute inset-y-6 right-6"
+            />
+          </div>
+          <div className="relative">
+            <button class="p-5 my-2 min-w-full text-left text-sm md:text-normal cursor-not-allowed hover-transition rounded-xl  text-darkblue-900  bg-darkblue-300 hover:bg-darkblue-900 hover:text-darkblue-300 focus:outline-none button-shadow">
+              Flint
+            </button>
+            <img
+              src={FlintLogo}
+              alt="Flint Wallet"
+              height="30px"
+              width="30px"
+              className="absolute inset-y-6 right-6"
+            />
+          </div>
+        </div>
+        <div className="flex mb-4 text-xs justify-self-center">
+          <FontAwesomeIcon icon={faExclamationCircle} className="absolute" />
+          <div>Many features will not be available if you don't connect a wallet.</div>
+        </div>
+        <div className="flex flex-col text-xs">
+          Don't have one?
+          <a
+            className="text-darkblue-200 font-semibold"
+            href="https://www.youtube.com/watch?v=qtV7Ye9hF2k"
+            target="_blank"
+            rel="noreferrer"
+          >
+            We recommend CCVault
+          </a>
+        </div>
       </div>
     </div>
   );

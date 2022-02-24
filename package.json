@@ -6,6 +6,8 @@
     "@ckeditor/ckeditor5-build-classic": "^28.0.0",
     "@ckeditor/ckeditor5-react": "^3.0.2",
     "@craco/craco": "^6.1.1",
+    "@emurgo/cardano-message-signing-browser": "^1.0.0",
+    "@emurgo/cardano-serialization-lib-nodejs": "^10.0.3",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
