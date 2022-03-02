@@ -6,17 +6,14 @@ import { faConnectdevelop } from "@fortawesome/free-brands-svg-icons";
 
 import Login from "./auth/Login";
 import Modal from "./Modal";
-import Register from "./auth/Register";
+// import Register from "./auth/Register";
 
 const Navbar = () => {
   const auth = useSelector((state) => state.authReducer);
   const [showLogin, setShowLogin] = useState(false);
-  const [showRegister, setShowRegister] = useState(false);
+
   const onShowLogin = () => {
     setShowLogin(true);
-  };
-  const onShowRegister = () => {
-    setShowRegister(true);
   };
 
   return (
@@ -24,11 +21,6 @@ const Navbar = () => {
       {showLogin ? (
         <Modal show={showLogin}>
           <Login setShowModal={setShowLogin} />
-        </Modal>
-      ) : null}
-      {showRegister ? (
-        <Modal show={showRegister}>
-          <Register setShowModal={setShowRegister} />
         </Modal>
       ) : null}
       <div className="">
@@ -111,15 +103,9 @@ const Navbar = () => {
           <div className="flex items-center mr-2">
             <div
               onClick={onShowLogin}
-              className="text-darkblue-800 p-2 m-2 rounded bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300 cursor-pointer hover-transition button-shadow"
+              className="px-5 py-2 m-2 rounded-lg font-medium bg-darkblue-300 hover:bg-darkblue-700 text-darkblue-900  hover:text-darkblue-100 cursor-pointer hover-transition button-shadow"
             >
-              Login
-            </div>
-            <div
-              onClick={onShowRegister}
-              className="text-darkblue-800 p-2 m-2 rounded bg-darkblue-300 hover:bg-darkblue-700 hover:text-darkblue-300 cursor-pointer hover-transition button-shadow"
-            >
-              Register
+              Connect Wallet
             </div>
           </div>
         ) : null}

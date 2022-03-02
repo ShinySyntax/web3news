@@ -104,7 +104,7 @@
 }
 
 .button-shadow {
-  box-shadow: rgb(129 140 167) 0px 0px 8px 2px;
+  box-shadow: rgb(129, 140, 167) 0px 0px 8px 2px;
 }
 
 .shadow-white {
@@ -151,4 +151,8 @@
   animation-duration: 7s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
 }
